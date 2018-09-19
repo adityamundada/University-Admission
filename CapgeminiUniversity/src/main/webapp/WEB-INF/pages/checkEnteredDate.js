@@ -3,15 +3,15 @@ function checkEnteredDate() {
 	var systemDD = systemDate.getDate();
 	var systemMM = systemDate.getMonth() + 1; // because January is 0!
 	var systemYYYY = systemDate.getFullYear();
-	var enteredDate = document.getElementById("enteredDate").value;
+	var startDate = document.getElementById("startDate").value;
+	var enteredDate = document.getElementById("enteredDate");
+	var enteredDD = enteredDate.getDate();
+	var enteredMM;
+	var enteredYYYY;
 	
-	unit = parseInt(unit,10);	//Converting the digit string to an Integer
-	if(unit<=100){
-		total_charges= unit*price_first_100;
+	if(enteredDate > systemDate && enteredDate < startDate) {
+		return true;
 	}
-	else{
-		total_charges = 100*price_first_100 + (unit-100)*price_normal; 
-	}
-	alert("Your total electricity bill is : Rs."+total_charges);
-	return true;
+	else
+		alert("Please enter interview date between today's date and start date of program");
 }

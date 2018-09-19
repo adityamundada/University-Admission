@@ -1,8 +1,6 @@
 package com.cg.uas.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -116,5 +114,20 @@ public class MACDaoImpl implements IMACDao {
 		else {
 			return null;
 		}
+	}
+	
+	@Override
+	public Date getStartDateForValidation(Integer applicationId) throws UniversityException {
+
+		Date startDate;
+		ProgramScheduledBean programScheduledBean = new ProgramScheduledBean();
+		TypedQuery<ProgramScheduledBean> tQuery = entityManager.createQuery(IQueryMapper.RETRIEVE_START_DATE_FOR_VALIDATION, ProgramScheduledBean.class);
+		tQuery.setParameter(1, applicationId);
+		
+		programScheduledBean = tQuery.getSingleResult();
+		
+		startDate = programScheduledBean.getStartDate();
+	
+		return startDate;
 	}
 }

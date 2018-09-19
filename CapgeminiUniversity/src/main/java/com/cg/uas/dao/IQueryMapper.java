@@ -41,7 +41,7 @@ public interface IQueryMapper {
 	public static final String SET_STATUS_REJECT = "UPDATE ApplicationBean SET status = 'REJECTED' WHERE applicationId = ?1";
 	public static final String RETRIEVE_APPLICANTS_STATUS_CONFIRMED = "SELECT ab from ApplicationBean ab where ab.scheduledProgramID = ?1 AND ab.status='CONFIRMED'";
 	public static final String RETRIEVE_CONFIRMED_PARTICIPANT = "SELECT pb from ParticipantBean pb";
-	
+	public static final String RETRIEVE_START_DATE_FOR_VALIDATION = "SELECT psb FROM ProgramScheduledBean psb WHERE psb.scheduledProgramID = (SELECT ab.scheduledProgramID FROM ApplicationBean ab WHERE ab.applicationId = ?1)";
 	
 	
 	//gangotry

@@ -22,7 +22,7 @@ body{
 		<div>
 		
 		<c:url var = "myAction" value="interview.obj"></c:url>
-		<form:form method="post" modelAttribute="applicationBean" action="${myAction} onSubmit="return checkEnteredDate()">
+		<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate()">
 		<h2>Confirm Interview </h2>
 		
 		<td>Application ID:</td>
@@ -30,8 +30,11 @@ body{
   			<form:errors path="applicationId" style="color:red"> </form:errors>
   		</td>
   		<td>Interview date:</td>
-  		<td><form:input type="date" path="dateOfInterview"/>
+  		<td><form:input type="date" id="enteredDate" path="dateOfInterview"/>
   			<form:errors path="dateOfInterview" style="color:red"> </form:errors>
+  		</td>
+  		<td>
+  			<input type="hidden" id="startDate" value="${startDate}"/>			 
   		</td>
   		<h5><input type="submit" value="Set interview date"></h5>
 		</form:form>
