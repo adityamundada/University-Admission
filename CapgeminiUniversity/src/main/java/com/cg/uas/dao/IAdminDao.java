@@ -7,7 +7,7 @@ import com.cg.uas.entities.ProgramOfferedBean;
 import com.cg.uas.entities.ProgramScheduledBean;
 import com.cg.uas.exception.UniversityException;
 
-public interface IAdminDAO {
+public interface IAdminDao {
 
 	
 	public ProgramOfferedBean addProgramOffered(ProgramOfferedBean programOffered) throws UniversityException;

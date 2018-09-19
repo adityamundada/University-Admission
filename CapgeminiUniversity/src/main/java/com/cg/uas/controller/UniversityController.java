@@ -2,7 +2,6 @@ package com.cg.uas.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -32,14 +31,14 @@ import com.cg.uas.service.IMACService;
 public class UniversityController {
 	
 	@Autowired
-	IApplicantService service;
+	private IApplicantService applicantService;
 	
 	@Autowired
-	IAdminService adminService;
+	private IAdminService adminService;
 	
 	
 	@Autowired
-	IMACService macservice;
+	private IMACService macService;
 	
 	
 	
@@ -79,7 +78,7 @@ public class UniversityController {
 	@RequestMapping("/checkLogin")
 	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model,HttpSession session)  throws UniversityException   
 	{
-		String role=service.checkuser(l);
+		String role=applicantService.checkuser(l);
 
 		if(role==null)
 		{
@@ -129,7 +128,7 @@ public class UniversityController {
 
 		ModelAndView model=new ModelAndView();
 		ApplicationBean applicant=null;
-		try{applicant=service.viewStatusById(appId);
+		try{applicant=applicantService.viewStatusById(appId);
 		if(applicant==null)
 		{
 			
@@ -156,7 +155,7 @@ public class UniversityController {
 	public ModelAndView showApplyOnline() throws UniversityException{
 		ModelAndView mnv=new ModelAndView();
 		List<ProgramScheduledBean> list;
-		list=service.viewAllScheduledProgram();
+		list=applicantService.viewAllScheduledProgram();
 		ArrayList<String> ids=new ArrayList<String>();
 		for (ProgramScheduledBean s:list){
 			ids.add(s.getScheduledProgramID());
@@ -187,7 +186,7 @@ public class UniversityController {
 	ModelAndView model=new ModelAndView();
 	List<ProgramScheduledBean> list;
 	try{
-	list=service.viewAllScheduledProgram();
+	list=applicantService.viewAllScheduledProgram();
 	if(list.size()<1)
 	{
 		model.setViewName("error");
@@ -227,7 +226,7 @@ return model;
 	
 		if(result.hasErrors()){
 			List<ProgramScheduledBean> list;
-			list=service.viewAllScheduledProgram();
+			list=applicantService.viewAllScheduledProgram();
 			ArrayList<String> ids=new ArrayList<String>();
 			for (ProgramScheduledBean s:list){
 				ids.add(s.getScheduledProgramID());
@@ -239,7 +238,7 @@ return model;
 		}
 		else{
 			try {
-				applicant=service.addApplicant(applicant);
+				applicant=applicantService.addApplicant(applicant);
 				mnv.setViewName("successApplicant");// add the applicant object to the success page
 			} catch (UniversityException e) {
 				
@@ -623,7 +622,7 @@ return model;
 		ModelAndView model = new ModelAndView();
 		List<ProgramScheduledBean> programScheduledList;
 		try {
-			programScheduledList = macservice.viewAllScheduledPrograms();
+			programScheduledList = macService.viewAllScheduledPrograms();
 			if(programScheduledList.size() < 1) {
 				model.setViewName("error");
 				model.addObject("message", "NO RECORDS FOUND");
@@ -648,7 +647,7 @@ return model;
 		ModelAndView model = new ModelAndView();
 		List<ApplicationBean> applicationList;
 		try {
-			applicationList = macservice.viewApplicant(programId);
+			applicationList = macService.viewApplicant(programId);
 			if(applicationList.size() < 1) {
 				model.setViewName("error");
 				model.addObject("message", "NO RECORDS FOUND");
@@ -674,7 +673,7 @@ return model;
 		ApplicationBean applicationBean = new ApplicationBean();
 		applicationBean.setApplicationId(appId);
 		try {
-			macservice.accept(appId);
+			macService.accept(appId);
 			model.setViewName("interviewDate");
 			//model.addObject("applicant", appId);
 			model.addObject("applicationBean", applicationBean);
@@ -696,7 +695,7 @@ return model;
 		try {
 			System.out.println("xxxxxxxxx in /interview.obj ---->" + applicationBean.getDateOfInterview());
 			System.out.println("yyyyyyyyyy in /interview.obj --->" + applicationBean.getApplicationId());
-			macservice.interview(applicationBean.getApplicationId(), applicationBean.getDateOfInterview());
+			macService.interview(applicationBean.getApplicationId(), applicationBean.getDateOfInterview());
 			model.setViewName("MACHome");
 		} 
 		catch (UniversityException e) {
@@ -715,7 +714,7 @@ return model;
 	public ModelAndView reject(@RequestParam("appId") Integer appId) {
 		ModelAndView model = new ModelAndView();
 		try {
-			macservice.reject(appId);
+			macService.reject(appId);
 			model.setViewName("MACHome");
 		} 
 		catch (UniversityException e) {
@@ -734,7 +733,7 @@ return model;
 		List<ProgramScheduledBean> programScheduledList;
 		System.out.println("xxxxxxxx");
 		try {
-			programScheduledList = macservice.viewAllScheduledPrograms();
+			programScheduledList = macService.viewAllScheduledPrograms();
 			if(programScheduledList.size() < 1) {
 				System.out.println("yyyyyyy");
 				model.setViewName("error");
@@ -762,7 +761,7 @@ return model;
 		List<ApplicationBean> list;
 		//System.out.println("aaaaaaaaaa");
 		try {
-			list = macservice.confirmedApplicants(programId);
+			list = macService.confirmedApplicants(programId);
 			if(list.size() < 1) {
 				model.setViewName("error");
 				model.addObject("message", "NO RECORD FOUND");
@@ -786,7 +785,7 @@ return model;
 	public ModelAndView confirm(@RequestParam("appId") Integer appId) {
 		ModelAndView model = new ModelAndView();
 		try {
-			macservice.confirm(appId);
+			macService.confirm(appId);
 			model.setViewName("MACHome");
 		} 
 		catch (UniversityException e) {
@@ -823,7 +822,7 @@ return model;
 			ModelAndView model = new ModelAndView();
 			List<ProgramScheduledBean> programScheduledList;
 			try {
-				programScheduledList = macservice.viewAllScheduledPrograms();
+				programScheduledList = macService.viewAllScheduledPrograms();
 				if(programScheduledList.size() < 1) {
 					model.setViewName("error");
 					model.addObject("message", "NO RECORDS FOUND");
@@ -851,7 +850,7 @@ return model;
 			ModelAndView model = new ModelAndView();
 			List<ParticipantBean> confirmedList;
 			try {
-				confirmedList = macservice.viewConfirmedApplicants(programId);
+				confirmedList = macService.viewConfirmedApplicants(programId);
 				if(confirmedList.size() < 1 || confirmedList == null) {
 					model.setViewName("error");
 					model.addObject("message", "NO RECORD FOUND");
@@ -900,7 +899,7 @@ return model;
 		
 		List<ApplicationBean> applicantList;
 		
-			applicantList = macservice.viewApplicant(scheduledProgramID);
+			applicantList = macService.viewApplicant(scheduledProgramID);
 			if(applicantList.size() < 1) {
 				mnv.setViewName("error");
 				mnv.addObject("message", "NO APPLICANT RECORD FOUND");
