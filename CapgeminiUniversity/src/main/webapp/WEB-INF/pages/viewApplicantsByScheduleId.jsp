@@ -13,6 +13,9 @@ body{
 	background-color: #323030;
 	color:white;
 }
+table {
+	border: 2px solid white;
+}
 
 </style>
 </head>
@@ -52,6 +55,9 @@ body{
 			</tbody>
 </table>
 </center>
+<br>
+<br>
+<br>
 <a href="adminHome.obj">Go to Admin Homepage</a>
 
 

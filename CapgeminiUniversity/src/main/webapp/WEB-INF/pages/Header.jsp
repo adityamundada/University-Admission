@@ -21,7 +21,7 @@ body {
   float: left;
   width: 60px;
   height: 60px;
-  background: #555;
+  background: #555; 
 }
 
 .header h1 {
@@ -47,20 +47,27 @@ ul li {
 ul li:last-child{
     padding-right: 10px;
 }
-
-
+a{
+	padding: 0px;
+}
+.header .homeLogo{
+	width: 30px;
+	height: 30px;
+}
 
  
 </style>
 </head>
 <body>
 <div class="header">
+
 <img src="images/logo.png" alt="logo">
 <center><h1 style="font-family:arial,serif; color:cyan;">University Admission Portal </h1></center>
 <ul>
-       <li> <a href="index.obj"><img src="images/homeimage.png" width="42" height="42"></a></li>  
+
+       <li> <a href="index.obj"><img class ="homeLogo" src="images/homeimage.png" ></img></a></li>  
        
-     </ul>
+</ul>
 
 </div>
 </body>

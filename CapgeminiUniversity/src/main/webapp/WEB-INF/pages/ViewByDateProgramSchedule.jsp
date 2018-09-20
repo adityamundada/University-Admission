@@ -18,7 +18,7 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 <center>
-<h1>View Program Schedule By Date</h1>
+<h3>View Program Schedule By Date</h3>
 <c:url var = "myAction" value="viewByDateProgramSchedule.obj"></c:url>
 
 <form:form method="post" modelAttribute="programScheduledBean" action="${myAction}">
@@ -29,15 +29,19 @@ body{
   Enter Schedule Start Date:<form:input type = "date"  path="endDate" placeholder = "dd/mm/yyyy"/>
   <form:errors path="endDate" style="color:red"></form:errors><br/><br/>
   
-  <input type="submit" value="View Schedule"/> <br>
+  <input type="submit" value="View Schedule"/> 
+  <br>
 </form:form>
+<br>
+<br>
+
 <c:if test="${message ne  null}">
-	<h4 style="color :red">${message}</h4>
+	<br><h4 style="color :red">${message}</h4>
 
 </c:if>
 <c:if test="${programViewByDate ne null}">
 	<div>
-		<table border="2px">
+		<table border="2px solid white" >
 			<tr>
 				<th>Program Schedule Id</th>
 				<th>Program Name</th>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +31,9 @@ import com.cg.uas.service.IMACService;
 
 @Controller
 public class UniversityController {
-	
+
 	public static final Logger logger = Logger.getLogger(UniversityController.class);
-	
+
 	@Autowired
 	private IApplicantService applicantService;
 	
@@ -93,6 +94,7 @@ public class UniversityController {
 			if("admin".equals(role))
 			{
 				logger.info("Admin logged in successfully!");
+
 				return new ModelAndView("AdminHome","user","admin");
 			}
 				else if("mac".equals(role))
@@ -231,7 +233,7 @@ return model;
 	
 
 	/*
-	 * admin controller code
+	 * Admin controller code
 	 * 
 	 * 
 	 * 
@@ -362,7 +364,7 @@ return model;
 			if(offeredFlag==true){
 				model.setViewName("deleted");
 			}else{
-				model.addObject("message", "Cannot be deleted");
+				model.addObject("message", "Program cannot be deleted since it is already scheduled");
 				model.setViewName("error");
 			}
 		} catch (UniversityException e) {
@@ -413,14 +415,10 @@ return model;
 	}
 	
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	/*
-	 * gangotry's code
-	 * 
-	 * 
-	 * 
-	*/
+
+	
 	//Adding Schedule
+	
 		@RequestMapping(value = "/prepareAddProgramSchedule.obj")
 		public String prepareAddProgramSchedule(@RequestParam("programName")String programName,Model model){
 			ProgramScheduledBean psb= new ProgramScheduledBean();
@@ -446,7 +444,7 @@ return model;
 				}
 				String errorMessage = adminService.isValidAddSchedule(programScheduledBean.getStartDate(), programScheduledBean.getEndDate(), duration);
 				//System.out.println("------------------------------ error msg " + errorMessage);
-				if(errorMessage !=null){
+				if(!errorMessage.equals("")){
 					mnv.addObject("message", errorMessage);
 					mnv.addObject("programScheduledBean",programScheduledBean );
 					mnv.setViewName("addProgramSchedule");

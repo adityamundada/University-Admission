@@ -62,6 +62,11 @@ body{
   	</td>
 </tr>
 </table>
+
+<br>
+
+	
+
 	<input type="submit" value="Add Program"/>
 
   
@@ -70,7 +75,7 @@ body{
 <br>
  <c:if test="${programName ne null}">
 			<div>
-			Program ${programName} is addded successfully.
+			Program ${programName} is added successfully.
 			</div>
 </c:if>
 

@@ -6,7 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>View Admin operations</title>
 <style type="text/css">
-
+#footer{
+	background-color:grey;
+    padding:1px;
+    color: white;
+    bottom: 0;
+  
+}
 body {
    background-color:NightRider;
     font-family: Verdana, sans-serif; margin:0;
@@ -26,7 +32,7 @@ ul {
     left:8px;
     right: 30px;
     overflow: hidden;
-    background-color:beige;
+    background-color:aliceblue;
     color: brown
 }
 
@@ -82,13 +88,13 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 </style>
 </head>
 <body>
 <div class="header">
 <img src="images/logo.png" alt="logo">
-<h1>University Admission Portal </h1>
+<center><h1 style="font-family:arial,serif; color:cyan;">University Admission Portal </h1></center>
+
 </div>
 <br>
 
@@ -96,15 +102,13 @@ li.dropdown {
   <nav>
     
         <ul>
-         <li><a href="index.obj">Home</a></li>
-            <li><a href="default.asp">Logout</a></li>
+         <li><a href="index.obj">Logout</a></li>
             
             <li><a href="viewApplicantsByScheduleId.obj">View Applicants</a></li>
             <li class="dropdown">
               <a href="javascript:void(0)" class="dropbtn">Programs Scheduled</a>
               <div class="dropdown-content">
                 <a href="beforeAddSchedule.obj">Add Schedule</a>
-                <!-- go to beforeAddSchedule.jsp Page -->
                 <a href="prepareDeleteProgramSchedule.obj">Delete Schedule</a>
                 <a href="prepareViewByDateProgramSchedule.obj">view Scheduled Programs</a>
               </div>
@@ -114,7 +118,6 @@ li.dropdown {
                 <div class="dropdown-content">
                   <a href="addProgramsOffered.obj">Add Program</a>
                   <a href="updateDelete.obj">Update/Delete Program</a>
-                  <!-- <a href="updateDelete.obj">Delete Program</a> --> 
                 </div>
               </li>
           </ul>
@@ -128,8 +131,23 @@ li.dropdown {
 <br>
 <br>
 <br>
- <img src="images/admin.jpg"  style="width:170px;height:170px;"></center>
+ <img src="images/admin.jpg"  style="width:170px;height:170px;">
+ <br>
+ <br>
+ <br>
+ <br>
+ </center>
+<%-- <%@ include file = "Footer.jsp" %> --%>
+
+<div id="footer">
+<h3> Contact Us</h3>
+Address: DivyaSree TechnoPark, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066       <br>
+Telephone: +91-9876543278, Fax: +91-755 2670562 <br>
+ Email: enquiryhelp@university.com<br>
+<center>
+<p>© 2018 All Rights Reserved Terms of Use and Privacy Policy<p>
 </center>
+</div>
 
   
 </body>

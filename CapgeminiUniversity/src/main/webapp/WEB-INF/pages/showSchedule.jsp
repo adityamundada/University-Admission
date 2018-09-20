@@ -44,7 +44,7 @@ background-color:green;
 				</c:forEach>
 			</tbody>
 		</table> 
-		<center>
+		</center>
 		 <br>
   <br>
   <a href="machome.obj">MAC Homepage</a>

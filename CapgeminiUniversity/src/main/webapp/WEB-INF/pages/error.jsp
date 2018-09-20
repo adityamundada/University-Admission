@@ -14,6 +14,11 @@
 body{
 	background-color: #323030;
 	color: white;
+}
+img{
+	width: 20%;
+	/* height: 50%; */
+	
 	
 }
 
@@ -26,7 +31,7 @@ body{
 ${message}
 </h2>
 
- <img src="images/oops.jpg" style="width:50%">
+ <img src="images/oops.jpg" >
 </center>
 
 

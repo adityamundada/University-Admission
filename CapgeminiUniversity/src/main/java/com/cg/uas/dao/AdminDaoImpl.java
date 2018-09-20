@@ -24,6 +24,15 @@ public class AdminDaoImpl implements IAdminDao{
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	/************************************   ADD PROGRAMS OFFERED  ********************************************
+ 	- Function Name		:	addProgramOffered(ProgramOfferedBean programOfferedBean)
+	- Input Parameters	:	ProgramOfferedBean
+	- Return Type		:	ProgramOfferedBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	adds program offered to the database
+ ********************************************************************************************************/
 	
 	@Override
 	public ProgramOfferedBean addProgramOffered(ProgramOfferedBean programOfferedBean) throws UniversityException {
@@ -35,15 +44,32 @@ public class AdminDaoImpl implements IAdminDao{
 		return programOfferedBean;
 	}
 
-
+	/************************************   VIEW PROGRAMS OFFERED  *****************************************
+ 	- Function Name		:	viewProgramsOffered()
+	- Input Parameters	:	-
+	- Return Type		:	List<ProgramOfferedBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	retrieves the programs offered data 
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public List<ProgramOfferedBean> viewProgramsOffered() throws UniversityException {
 
-		TypedQuery<ProgramOfferedBean> query=entityManager.createQuery("select p from ProgramOfferedBean p",ProgramOfferedBean.class);
+		TypedQuery<ProgramOfferedBean> query=entityManager.createQuery(IQueryMapper.VIEW_PROGRAMS_OFFERED,ProgramOfferedBean.class);
 		return query.getResultList();
 	}
 
-
+	/************************************   UPDATE PROGRAMS OFFERED  *****************************************
+ 	- Function Name		:	updateOffered(ProgramOfferedBean bean)
+	- Input Parameters	:	ProgramOfferedBean bean
+	- Return Type		:	boolean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	updates the programs offered row 
+	 ********************************************************************************************************/ 
 
 	@Override
 	public boolean updateOffered(ProgramOfferedBean bean)throws UniversityException {
@@ -52,7 +78,16 @@ public class AdminDaoImpl implements IAdminDao{
 		return true;
 	}
 
-
+	/************************************   FIND PROGRAM OFFERED  *************************************************
+ 	- Function Name		:	findOffrered(String name)
+	- Input Parameters	:	String name
+	- Return Type		:	ProgramOfferedBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	retrieves the program data for a particular name 
+	 ********************************************************************************************************/  
+	
 	@Override
 	public ProgramOfferedBean findOffered(String name)throws UniversityException {
 		ProgramOfferedBean bean = entityManager.find(
@@ -64,7 +99,16 @@ public class AdminDaoImpl implements IAdminDao{
 			return null;
 	}
 
-
+	/************************************   DELETE PROGRAMS OFFERED  *****************************************
+ 	- Function Name		:	deleteOffered(String name)
+	- Input Parameters	:	String name
+	- Return Type		:	boolean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	delete the programs offered row 
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public boolean deleteOffered(String name) throws UniversityException {
 		// 
@@ -73,12 +117,10 @@ public class AdminDaoImpl implements IAdminDao{
 			return false;
 		}else{
 
-			//ProgramScheduledBean scheduleBean = entityManager.find(ProgramScheduledBean.class, name);
-			TypedQuery<ProgramScheduledBean> query=entityManager.createQuery("select p from ProgramScheduledBean p where p.programName =:programName  ",ProgramScheduledBean.class);
+			TypedQuery<ProgramScheduledBean> query=entityManager.createQuery(IQueryMapper.DELETE_PROGRAMS_OFFERED,ProgramScheduledBean.class);
 			query.setParameter("programName", name);
 			List<ProgramScheduledBean> scheduleBean  =query.getResultList();
 			if(scheduleBean.size()==0){
-				//System.out.println(scheduleBean);
 				entityManager.remove(bean);
 				return true;
 			}else{
@@ -87,13 +129,17 @@ public class AdminDaoImpl implements IAdminDao{
 			}
 				
 		}
-		
-		
-		
-		
 			
 	}
-
+	/************************************   DELETE PROGRAM SCHEDULE   *****************************************
+ 	- Function Name		:	deleteSchedule(String scheduledProgramID)
+	- Input Parameters	:	String scheduledProgramID
+	- Return Type		:	ProgramScheduledBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	delete schedule for a program 
+	 ********************************************************************************************************/ 
 
 	@Override
 	public ProgramScheduledBean deleteSchedule(String scheduledProgramID)
@@ -104,7 +150,7 @@ public class AdminDaoImpl implements IAdminDao{
 		else{
 			
 			
-			TypedQuery<ApplicationBean> query=entityManager.createQuery("select a from ApplicationBean a where a.scheduledProgramID =:scheduleId  ",ApplicationBean.class);
+			TypedQuery<ApplicationBean> query=entityManager.createQuery(IQueryMapper.DELETE_PROGRAMS_SCHEDULED,ApplicationBean.class);
 			query.setParameter("scheduleId", scheduledProgramID);
 			 List<ApplicationBean> applicationList =query.getResultList();
 			 System.out.println("size is "+ applicationList.size());
@@ -117,29 +163,58 @@ public class AdminDaoImpl implements IAdminDao{
 			 }
 		}
 	}
+	
+	/************************************   VIEW PROGRAM SCHEDULE   *****************************************
+ 	- Function Name		:	viewSchedule(String scheduledProgramID)
+	- Input Parameters	:	Date startDate, Date endDate
+	- Return Type		:	List<ProgramScheduledBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Displays programs scheduled between startDate and endDate
+	 ********************************************************************************************************/ 
 
 
 	@Override
 	public List<ProgramScheduledBean> viewSchedule(Date startDate, Date endDate)
 			throws UniversityException {
-		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery("SELECT p FROM ProgramScheduledBean p WHERE start_date >=:startDate AND end_date <=:endDate",ProgramScheduledBean.class);
+		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery(IQueryMapper.VIEW_SCHEDULE_BYDATE,ProgramScheduledBean.class);
 		query.setParameter("startDate", startDate);
 		query.setParameter("endDate", endDate);
 		return query.getResultList();
 	}
-
-
+    
+	/************************************   ADD PROGRAM SCHEDULE  *****************************************
+ 	- Function Name		:	addSchedule(ProgramScheduledBean programScheduledBean)
+	- Input Parameters	:	ProgramScheduledBean programScheduledBean
+	- Return Type		:	ProgramScheduledBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	add schedule for a program 
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public ProgramScheduledBean addSchedule(ProgramScheduledBean programScheduledBean)throws UniversityException {
 		entityManager.persist(programScheduledBean);
 		entityManager.flush();
 		return programScheduledBean;
 	}
+	
+	/************************************   VIEW PROGRAMS SCHEDULE   *****************************************
+ 	- Function Name		:	viewProgramsScheduled()
+	- Input Parameters	:	-
+	- Return Type		:	List<ProgramScheduledBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Displays scheduled programs
+	 ********************************************************************************************************/ 
 
 	@Override
 	public List<ProgramScheduledBean> viewProgramsScheduled() throws UniversityException {
 
-		TypedQuery<ProgramScheduledBean> query=entityManager.createQuery("select p from ProgramScheduledBean p",ProgramScheduledBean.class);
+		TypedQuery<ProgramScheduledBean> query=entityManager.createQuery(IQueryMapper.VIEW_PROGRAMS_SCHEDULED,ProgramScheduledBean.class);
 		return query.getResultList();
 	}
 	

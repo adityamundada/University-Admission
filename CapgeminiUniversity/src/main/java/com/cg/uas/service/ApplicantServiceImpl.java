@@ -18,27 +18,28 @@ public class ApplicantServiceImpl implements IApplicantService {
 	@Autowired
 	private IApplicantDao dao;
 
+	/* Add an Applicant */
 	@Override
-	public ApplicationBean addApplicant(ApplicationBean applicant)
-			throws UniversityException {
+	public ApplicationBean addApplicant(ApplicationBean applicant) throws UniversityException {
 		return dao.addApplicant(applicant);
 	}
 	
+	/* View Status of Application */
 	@Override
 	public ApplicationBean viewStatusById(Integer appid) throws UniversityException {
 		return dao.viewStatusById(appid);
 	}
 	
+	/* Validates Login Credentials */
 	@Override
-	public String checkuser(LoginBean l)
-			throws UniversityException {
+	public String checkuser(LoginBean l) throws UniversityException {
 		System.out.println("in service");
 		return dao.checkuser(l);
 	}
 	
+	/* View all scheduled programs */
 	@Override
-	public List<ProgramScheduledBean> viewAllScheduledProgram()
-			throws UniversityException {
+	public List<ProgramScheduledBean> viewAllScheduledProgram() throws UniversityException {
 		return dao.viewAllScheduledProgram();
 	}
 	

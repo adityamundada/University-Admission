@@ -7,7 +7,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Schedule the program</title>
 <style>
 body{
 	background-color: #323030;
@@ -22,7 +22,7 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 <center>
-
+<h3>Schedule the program</h3>
 <c:url var = "myAction" value="addProgramSchedule.obj"></c:url>
 
 <form:form method="post" modelAttribute="programScheduledBean" action="${myAction}">
@@ -70,12 +70,17 @@ body{
   </table>
   <br>
   
-  <input type="submit" value="Add"/>
+  <input type="submit" value="Add Schedule"/>
 </form:form>
 
 <c:if test="${programAdded ne null}" >
 	<h2>Program schedule added successfully.</h2> <br>
 </c:if>
+
+<c:if test="${message ne null}" >
+	<p style="color: red" >${message }</p> 
+</c:if>
+
 </center>
 <br>
 <br>
