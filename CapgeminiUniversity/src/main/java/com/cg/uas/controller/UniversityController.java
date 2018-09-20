@@ -96,6 +96,10 @@ public class UniversityController {
 			if("admin".equals(role))
 			{
 
+<<<<<<< HEAD
+				logger.info("in admin login");
+=======
+>>>>>>> e65da05e12a14d6f378de9e41bdb1a2e02ea0a6e
 				return new ModelAndView("AdminHome","user","admin");
 				
 				
@@ -236,7 +240,7 @@ return model;
 	
 
 	/*
-	 * admin controller code
+	 * Admin controller code
 	 * 
 	 * 
 	 * 
@@ -418,14 +422,10 @@ return model;
 	}
 	
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	/*
-	 * gangotry's code
-	 * 
-	 * 
-	 * 
-	*/
+
+	
 	//Adding Schedule
+	
 		@RequestMapping(value = "/prepareAddProgramSchedule.obj")
 		public String prepareAddProgramSchedule(@RequestParam("programName")String programName,Model model){
 			ProgramScheduledBean psb= new ProgramScheduledBean();

@@ -23,11 +23,31 @@ public class MACDaoImpl implements IMACDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	/************************************   VIEW ALL PROGRAMS SCHEDULE   *****************************************
+ 	- Function Name		:	viewAllScheduledPrograms()
+	- Input Parameters	:	-
+	- Return Type		:	List<ProgramScheduledBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Displays all scheduled programs
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public List<ProgramScheduledBean> viewAllScheduledPrograms() throws UniversityException {
 		TypedQuery<ProgramScheduledBean> tQuery = entityManager.createQuery(IQueryMapper.RETRIEVE_PROGRAMS_BY_ID, ProgramScheduledBean.class);
 		return tQuery.getResultList();
 	}
+	
+	/************************************   VIEW APPLICANT   *****************************************
+ 	- Function Name		:	viewApplicant()
+	- Input Parameters	:	String scheduledProgramId
+	- Return Type		:	List<ApplicationBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Displays applicants for a particular program
+	 ********************************************************************************************************/ 
 
 	@Override
 	public List<ApplicationBean> viewApplicant(String scheduledProgramId) throws UniversityException {
@@ -35,6 +55,16 @@ public class MACDaoImpl implements IMACDao {
 		tQuery.setParameter(1, scheduledProgramId);
 		return tQuery.getResultList();
 	}
+	
+	/************************************   ACCEPT APPLICANT   *****************************************
+ 	- Function Name		:	accept(Integer applicationId)
+	- Input Parameters	:	Integer applicationId
+	- Return Type		:	ApplicationBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Accepts an Applicant
+	 ********************************************************************************************************/ 
 
 	@Override
 	public ApplicationBean accept(Integer applicationId) throws UniversityException {
@@ -44,6 +74,16 @@ public class MACDaoImpl implements IMACDao {
 		return null;
 	}
 
+	/************************************   VIEW ACCEPTED APPLICANTS  *****************************************
+ 	- Function Name		:	confirmedApplicants()
+	- Input Parameters	:	String scheduledProgramId
+	- Return Type		:	List<ApplicationBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Displays accepted applications for a particular scheduled program
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public List<ApplicationBean> confirmedApplicants(String scheduledProgramId) throws UniversityException {
 		TypedQuery<ApplicationBean> tQuery = entityManager.createQuery(IQueryMapper.RETRIEVE_APPLICANTS_STATUS_ACCEPTED, ApplicationBean.class);
@@ -51,6 +91,16 @@ public class MACDaoImpl implements IMACDao {
 		return tQuery.getResultList();
 	}
 
+	/************************************   ADD INTERVIEW DATE   *****************************************
+ 	- Function Name		:	interview(Integer applicationId, Date date)
+	- Input Parameters	:	Integer applicationId, Date date
+	- Return Type		:	ApplicationBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Adds interview date for an applicant
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException {
 		
@@ -71,6 +121,16 @@ public class MACDaoImpl implements IMACDao {
 		return null;
 	}
 
+	/************************************    CONFIRM APPLICANT  *****************************************
+ 	- Function Name		:	confirm(Integer applicationId)
+	- Input Parameters	:	Integer applicationId
+	- Return Type		:	ApplicationBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Confirms applicant 
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public ApplicationBean confirm(Integer applicationId) throws UniversityException {
 		Query query = entityManager.createQuery(IQueryMapper.SET_STATUS_CONFIRMED);
@@ -78,6 +138,16 @@ public class MACDaoImpl implements IMACDao {
 		query.executeUpdate();
 		return null;
 	}
+	
+	/************************************    REJECT APPLICANT  *****************************************
+ 	- Function Name		:	reject(Integer applicationId)
+	- Input Parameters	:	Integer applicationId
+	- Return Type		:	ApplicationBean
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Rejects applicant 
+	 ********************************************************************************************************/ 
 
 	@Override
 	public ApplicationBean reject(Integer applicationId) throws UniversityException {
@@ -87,6 +157,16 @@ public class MACDaoImpl implements IMACDao {
 		return null;
 	}
 
+	/************************************   VIEW CONFIRMED APPLICANTS  *****************************************
+ 	- Function Name		:	viewConfirmedApplicants(String scheduledProgramId)
+	- Input Parameters	:	String scheduledProgramId
+	- Return Type		:	List<ParticipantBean>
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Displays confirmed applicants for a particular scheduled program
+	 ********************************************************************************************************/ 
+	
 	@Override
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId) {
 		List<ApplicationBean> applicationList = null;
@@ -115,6 +195,17 @@ public class MACDaoImpl implements IMACDao {
 			return null;
 		}
 	}
+	
+	/************************************   VALIDATE START DATE   *****************************************
+ 	- Function Name		:	getStartDateForValidation(Integer applicationId)
+	- Input Parameters	:	Integer applicationId
+	- Return Type		:	Date
+	- Throws			:  	UniversityException
+	- Author			:	cg 
+	- Creation Date		:	14/09/2018
+	- Description		:	Validates the start date
+	 ********************************************************************************************************/ 
+
 	
 	@Override
 	public Date getStartDateForValidation(Integer applicationId) throws UniversityException {

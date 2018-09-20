@@ -20,6 +20,8 @@ import org.springframework.format.annotation.NumberFormat;
 @Entity
 @Table(name="Application")
 public class ApplicationBean {
+	
+	//Application ID
 	@Id
 	@Column(name="Application_id")
 	@SequenceGenerator(name="applicationseq", sequenceName="application_seq",allocationSize=1)
@@ -27,20 +29,21 @@ public class ApplicationBean {
 	
 	private Integer applicationId;
 	
-	
+	//Full Name
 	@Column(name="full_name")
 	@Pattern(regexp="[A-Za-z\\s]{1,20}", message="Please enter your valid Full Name in alphabets maximum 20 characters")
 	@NotEmpty(message = "Please enter your full name.")
 	private String fullName;
 	
 	
+	//Date of Birth
 	//@Temporal(TemporalType.DATE)
 	@Column(name="date_of_birth")
 	//@DateTimeFormat(pattern="dd/MM/yyyy")
 	@NotNull(message = "Field cannot be empty")
 	private Date dateOfBirth;
 	
-	
+	//Highest Qualification
 	@Column(name="highest_qualification")
 	@NotEmpty(message = "Please enter your highest qualification.")
 	@Pattern(regexp="^[0-9a-zA-Z_ /.]*$", message="Please enter a valid Qualification")
@@ -48,7 +51,7 @@ public class ApplicationBean {
 	private String highestQualification;
 	
 	
-
+    //Marks Obtained
 	@Column(name="marks_obtained")
 	@NumberFormat(pattern = "[1-9]")
 	//@Pattern(regexp="[0-9]{1,3}", message="Marks should be numerical")
@@ -57,7 +60,7 @@ public class ApplicationBean {
 	private Integer marksObtained;
 	
 	
-	
+	//Goals
 	@Column(name="goals")
 	@NotEmpty(message = "Please enter your goals.")
 	@Pattern(regexp="^[0-9a-zA-Z_ /.]*$", message="Please enter a valid Goals")
@@ -65,34 +68,38 @@ public class ApplicationBean {
 	private String goals;
 	
 	
-/*	@Email*/
+    //Email
 	@Pattern(regexp="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$" , message="Please enter a valid emailId")
 	@NotEmpty(message = "Please enter your email addresss.")
 	@Column(name="email_id")
 	@Size(min=1,max=20)
 	private String emailID;
 	
+	//Program ID
 	@Column(name="Scheduled_program_id")
 	@NotEmpty(message = "Please select an Scheduled Program Id.")
 	private String scheduledProgramID;
 	
+	//Status
 	@Column(name="status")
 	private String status;
 	
 	
-	
+	//Date of Interview
 	//@Temporal(TemporalType.DATE)
 	@Column(name="Date_Of_Interview")
 	//@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date dateOfInterview;
 	
-	public int getApplicationId() {
-		return applicationId;
-	}
 	
 	/*
 	 * Getters And Setters Methods
 	 */
+	public int getApplicationId() {
+		return applicationId;
+	}
+	
+	
 	public void setApplicationId(Integer applicationId) {
 		this.applicationId = applicationId;
 	}
