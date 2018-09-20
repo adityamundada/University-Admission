@@ -370,7 +370,7 @@ return model;
 			if(offeredFlag==true){
 				model.setViewName("deleted");
 			}else{
-				model.addObject("message", "Cannot be deleted");
+				model.addObject("message", "Program cannot be deleted since it is already scheduled");
 				model.setViewName("error");
 			}
 		} catch (UniversityException e) {

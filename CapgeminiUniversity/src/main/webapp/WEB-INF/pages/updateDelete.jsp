@@ -9,7 +9,7 @@
 <title>Update/Delete Programs Offfered Page</title>
 <style type="text/css">
 table{
-	border: 2px solid black;
+	border: 2px solid white;
 }
 tr,th,td{
 	border:1px solid black;
