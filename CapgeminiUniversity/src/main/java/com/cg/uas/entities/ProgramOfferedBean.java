@@ -19,18 +19,18 @@ public class ProgramOfferedBean {
 
 	
 	@Id
-	@Pattern(regexp="[A-Za-z]{1,5}", message="Please enter a valid Program Name")
+	@Pattern(regexp="[A-Za-z]{1,5}", message="Please enter a valid Program Name (only alphabets, length 1-5)")
 	@NotEmpty(message="Program Name is mandatory")
 	@Column(name="PROGRAMNAME")
 	private String programName;
 	
 	@NotEmpty(message="Description is mandatory")
-	@Pattern(regexp="[A-Za-z0-9\\s]{2,20}", message="Please enter a valid description")
+	@Pattern(regexp="[A-Za-z0-9\\s]{2,20}", message="Please enter a valid description (only alphabets, length 2-20)")
 	@Column(name="DESCRIPTION")
 	private String description;
 	
 	@Column(name = "APPLICANT_ELIGIBILITY")	
-	@Pattern(regexp = "[A-Za-z\\s]{2,40}", message="Please enter a valid applicant eligibility")
+	@Pattern(regexp = "[0-9A-Za-z\\s]{2,40}", message="Please enter a valid applicant eligibility (only alphabets, length 2-40)")
 	@NotEmpty(message = "Applicant Eligibility is mandatory")
 	private String applicantEligibility;
 	

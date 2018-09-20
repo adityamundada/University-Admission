@@ -451,7 +451,7 @@ return model;
 				}
 				String errorMessage = adminService.isValidAddSchedule(programScheduledBean.getStartDate(), programScheduledBean.getEndDate(), duration);
 				//System.out.println("------------------------------ error msg " + errorMessage);
-				if(errorMessage !=null){
+				if(!errorMessage.equals("")){
 					mnv.addObject("message", errorMessage);
 					mnv.addObject("programScheduledBean",programScheduledBean );
 					mnv.setViewName("addProgramSchedule");

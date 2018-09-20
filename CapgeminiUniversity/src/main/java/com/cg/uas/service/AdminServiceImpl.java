@@ -92,7 +92,7 @@ public class AdminServiceImpl implements IAdminService{
 		String endDateinString = endDate.toString();
 		Date d1;
 		Date d2;
-		String errorMessage = null;
+		String errorMessage = "";
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			d1 = format.parse(startDateinString);
@@ -115,7 +115,7 @@ public class AdminServiceImpl implements IAdminService{
 		if (diffMonth == duration && diffDays == 0) {
 	
 		} else {
-			errorMessage += "\nDifference of entered da`tes does not match with duration of corresponding program";
+			errorMessage += "\nDifference of entered dates does not match with duration of corresponding program";
 		}
 		return errorMessage; 
 	}

@@ -74,7 +74,8 @@ body{
   </form:select>
   <form:errors path="scheduledProgramID" cssClass="error"></form:errors></td></tr>
  </table>
-  <input type="submit" value="Add"/>
+ <br>
+  <input type="submit" value="Register"/>
   
 </form:form>
 
@@ -82,10 +83,10 @@ body{
   <br>
   <br>
   <br>
-  <a href="showApplicant.obj">Go to Applicant Home Page</a>
  <br>
  <br>
  </center>
+  <a href="showApplicant.obj">Go to Applicant Home Page</a>
     <%@ include file = "Footer.jsp" %>
 </body>
 </html>
