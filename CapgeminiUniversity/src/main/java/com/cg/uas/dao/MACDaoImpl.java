@@ -104,16 +104,6 @@ public class MACDaoImpl implements IMACDao {
 	@Override
 	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException {
 		
-		/*SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-		Date date = null;
-		try {
-			date = sdf1.parse(dateInString);
-		} 
-		catch (ParseException e) {
-			System.err.println(e.getMessage());
-		}
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime()); */
-		
 		Query query = entityManager.createQuery(IQueryMapper.SET_INTERVIEW_DATE);
 		query.setParameter(1, date);
 		query.setParameter(2, applicationId);
@@ -203,7 +193,7 @@ public class MACDaoImpl implements IMACDao {
 	- Throws			:  	UniversityException
 	- Author			:	cg 
 	- Creation Date		:	14/09/2018
-	- Description		:	Validates the start date
+	- Description		:	Gets the start date to pass on to interview.jsp as hidden field
 	 ********************************************************************************************************/ 
 
 	

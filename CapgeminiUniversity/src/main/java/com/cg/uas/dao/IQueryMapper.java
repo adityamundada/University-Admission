@@ -25,9 +25,9 @@ public interface IQueryMapper {
 
 	public static final String GET_ROLE="SELECT role FROM Users WHERE login_id=? and password=?";
 	
-	public static final String INSERT_APPLICANT_QUERY="INSERT INTO application VALUES(applicationId_seq.NEXTVAL,?,?,?,?,?,?,?,?,?)";
+	public static final String INSERT_APPLICANT_QUERY="INSERT INTO application VALUES(applicationid_seq.NEXTVAL,?,?,?,?,?,?,?,?,?)";
 	
-	public static final String APPLICATIONID_QUERY_SEQUENCE="SELECT applicationId_seq.CURRVAL FROM DUAL";
+	public static final String APPLICATIONID_QUERY_SEQUENCE="SELECT applicationid_seq.CURRVAL FROM DUAL";
 	
 	public static final String VIEW_APPLICATION_STATUS="SELECT status FROM APPLICATION WHERE application_Id=?";
 	
