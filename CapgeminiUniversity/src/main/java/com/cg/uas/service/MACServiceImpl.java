@@ -1,6 +1,6 @@
 package com.cg.uas.service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +56,10 @@ public class MACServiceImpl implements IMACService {
 	@Override
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId) {
 		return MACdao.viewConfirmedApplicants(scheduledProgramId);
+	}
+	
+	@Override
+	public java.sql.Date getStartDateForValidation(Integer applicationId) throws UniversityException {
+		return MACdao.getStartDateForValidation(applicationId);
 	}
 }

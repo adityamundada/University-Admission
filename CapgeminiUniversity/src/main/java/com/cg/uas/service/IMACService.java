@@ -1,6 +1,6 @@
 package com.cg.uas.service;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import com.cg.uas.entities.ApplicationBean;
@@ -32,4 +32,6 @@ public interface IMACService {
 	public ApplicationBean reject(Integer applicationId) throws UniversityException;
 
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId) throws UniversityException;
+	
+	public java.sql.Date getStartDateForValidation(Integer applicationId) throws UniversityException;
 }

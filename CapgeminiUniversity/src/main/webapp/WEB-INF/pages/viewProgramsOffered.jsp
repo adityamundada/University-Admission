@@ -27,7 +27,7 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 <center>
-<h1> List of Programs Offered:</h1>
+<h3> List of Programs Offered:</h3>
 		<c:if test="${programsOfferedList ne null}">
 			<table>
 				<tr>

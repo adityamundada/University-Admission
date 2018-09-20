@@ -6,8 +6,31 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<script src="checkEnteredDate.js"> </script>
+		<!-- <script src="checkEnteredDate.js"> </script> -->
+		<script type = "text/JavaScript">
+			function checkEnteredDate() {
+				var tempSystemDate = new Date();
+				var getFromFormStartDate = document.getElementById("startDate").value;
+				var getFromFormEnteredDate = document.getElementById("enteredDate").value;
+			
+				var startDateInDateType = new Date(getFromFormStartDate);
+				var enteredDateInDateType = new Date(getFromFormEnteredDate);
+			
+				var formattedSystemDate = new Date(tempSystemDate.getFullYear(), tempSystemDate.getMonth() + 1, tempSystemDate.getDate());
+				var formattedStartDate = new Date(startDateInDateType.getFullYear(), startDateInDateType.getMonth() + 1, startDateInDateType.getDate());
+				var formattedEnteredDate = new Date(enteredDateInDateType.getFullYear(), enteredDateInDateType.getMonth() + 1, enteredDateInDateType.getDate());
+			
+				if(formattedEnteredDate >= formattedSystemDate && formattedEnteredDate < formattedStartDate) {
+					return true;
+				}
+				else {
+					alert("Please enter interview date between today's date and start date of program");
+					return false;
+				}
+			}
+      	</script>
 		<title>Interview</title>
+
 	<style>
 body{
 	background-color: #323030;
@@ -18,36 +41,35 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-<center>
-		<div>
+<%-- <center> --%>
+
 		
-		<c:url var = "myAction" value="interview.obj"></c:url>
-		<form:form method="post" modelAttribute="applicationBean" action="${myAction} onSubmit="return checkEnteredDate()">
-		<h2>Confirm Interview </h2>
-		
-		<td>Application ID:</td>
-  		<td><form:input path="applicationId" id="enteredDate" value="${applicationBean.applicationId}"/>
-  			<form:errors path="applicationId" style="color:red"> </form:errors>
-  		</td>
-  		<td>Interview date:</td>
-  		<td><form:input type="date" path="dateOfInterview"/>
-  			<form:errors path="dateOfInterview" style="color:red"> </form:errors>
-  		</td>
-  		<h5><input type="submit" value="Set interview date"></h5>
-		</form:form>
-		
-		
-		
-		
-		
-			<%-- <form action="interview.obj" method="post">
+
+		<div align="center">
+			<c:url var = "myAction" value="interview.obj"></c:url>
+			<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate();">
+				
 				<h2>Confirm Interview </h2>
-				Application ID: <input type="text" name="appId" value="${applicant}">    
-				Interview date: <input type="text" name="dateOfInterview">    
-				<h5><input type="submit" value="Interview"></h5>
-			</form> --%>
+		
+				<td>Application ID:</td>
+  				<td>
+  					<form:input path="applicationId" value="${applicationBean.applicationId}"/>
+  					<form:errors path="applicationId" style="color:red"> </form:errors>
+  				</td>
+  				<td>Interview date:</td>
+  				<td>
+  					<form:input type="date" id="enteredDate" path="dateOfInterview"/>
+  					<form:errors path="dateOfInterview" style="color:red"> </form:errors>
+  				</td>
+  				
+  				<td><input type="hidden" id="startDate" value="${startDate}"/></td>
+  				
+  				<h5><input type="submit" value="Set interview date"></h5>
+  				
+			</form:form>
         </div>
-        </center>
+
+<%-- </center> --%>
 		 <a href="machome.obj">MAC Homepage</a>
 		 <br>
   <br>
