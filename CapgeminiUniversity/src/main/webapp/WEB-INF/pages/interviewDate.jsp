@@ -9,10 +9,10 @@
 		<script src="checkEnteredDate.js"> </script>
 		<title>Interview</title>
 	<style>
-body{
-	background-color: #323030;
-	color:white;
-}
+	body {
+		background-color: #323030;
+		color:white;
+	}
 
 </style>
 </head>
@@ -22,7 +22,7 @@ body{
 		<div>
 		
 		<c:url var = "myAction" value="interview.obj"></c:url>
-		<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate()">
+		<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate();">
 		<h2>Confirm Interview </h2>
 		
 		<td>Application ID:</td>

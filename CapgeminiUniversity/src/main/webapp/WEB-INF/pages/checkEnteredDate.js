@@ -9,6 +9,10 @@ function checkEnteredDate() {
 	var enteredMM;
 	var enteredYYYY;
 	
+	console.log("Entered date:" + enteredDate);
+	console.log("System date:" + systemDate);
+	console.log("Start date:" + startDate);
+	
 	if(enteredDate > systemDate && enteredDate < startDate) {
 		return true;
 	}
