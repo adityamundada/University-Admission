@@ -19,8 +19,7 @@ public class ApplicantServiceImpl implements IApplicantService {
 	private IApplicantDao dao;
 
 	@Override
-	public ApplicationBean addApplicant(ApplicationBean applicant)
-			throws UniversityException {
+	public ApplicationBean addApplicant(ApplicationBean applicant) throws UniversityException {
 		return dao.addApplicant(applicant);
 	}
 	
@@ -30,15 +29,13 @@ public class ApplicantServiceImpl implements IApplicantService {
 	}
 	
 	@Override
-	public String checkuser(LoginBean l)
-			throws UniversityException {
+	public String checkuser(LoginBean l) throws UniversityException {
 		System.out.println("in service");
 		return dao.checkuser(l);
 	}
 	
 	@Override
-	public List<ProgramScheduledBean> viewAllScheduledProgram()
-			throws UniversityException {
+	public List<ProgramScheduledBean> viewAllScheduledProgram() throws UniversityException {
 		return dao.viewAllScheduledProgram();
 	}
 	

@@ -27,10 +27,10 @@ body{
 		
 	<div class="container">
 		<center>
-		<c:set var="status1" value="Applied"/>
-		<c:set var="status" value="Confirmed"/>
-		<c:set var="status2" value="Accepted"/>
-		<c:set var="status3" value="Rejected"/>
+		<c:set var="status1" value="APPLIED"/>
+		<c:set var="status" value="CONFIRMED"/>
+		<c:set var="status2" value="ACCEPTED"/>
+		<c:set var="status3" value="REJECTED"/>
 		<c:if test="${ applicant.status eq status }">
 			  <h1>Application Confirmed!!</h1>
 			</c:if>
@@ -47,17 +47,18 @@ body{
 			<c:if test="${applicant.status eq status3 }">
 			  <h1>Application Rejected!!</h1>
 			</c:if>
-			
-		
+			</center>
+		</div>
 <br>
   <br>
   <br>
   <br>
+  <center>
   <a href="showApplicant.obj">Go to Applicant Home Page</a>
    </center>
  <br>
  <br>
-
-  <%@ include file = "Footer.jsp" %>
+<br>
+<%@ include file = "Footer.jsp" %>
 </body>
 </html>
