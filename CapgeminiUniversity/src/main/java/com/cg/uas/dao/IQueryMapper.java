@@ -1,6 +1,9 @@
 package com.cg.uas.dao;
 
 public interface IQueryMapper {
+	
+	//Admin Queries (Program Offered)
+	
 
 	public static final String INSERT_ADMIN_QUERY = "INSERT INTO programs_offered values(?,?,?,?,?)";
 	
@@ -23,14 +26,14 @@ public interface IQueryMapper {
 	public static final String UPDATE_PROGRAM_OFFERED_DEGREE_CERTIFICATE_OFFERED = "UPDATE programs_offered set DEGREE_CERTIFICATE_OFFERED=? WHERE programname=?";
 	
 	
-	//chhavis code
+	// Applicant Queries 
 	public static final String GET_ROLE="SELECT role FROM Users WHERE login_id=? and password=?";
 	public static final String INSERT_APPLICANT_QUERY="INSERT INTO application VALUES(applicationId_seq.NEXTVAL,?,?,?,?,?,?,?,?,?)";
 	public static final String APPLICATIONID_QUERY_SEQUENCE="SELECT applicationId_seq.CURRVAL FROM DUAL";
 	public static final String VIEW_APPLICATION_STATUS="SELECT status FROM APPLICATION WHERE application_Id=?";
 	public static final String GET_ALL_SCHEDULE_PROGRAM_QUERY = "SELECT * FROM programs_scheduled";
 	
-	///MAC(intosh)
+	///MAC Queries
 	
 	public static final String RETRIEVE_PROGRAMS_BY_ID = "SELECT psb FROM ProgramScheduledBean psb";
 	public static final String RETRIEVE_APPLICANTS = "SELECT ab from ApplicationBean ab WHERE ab.scheduledProgramID = ?1";
@@ -44,7 +47,7 @@ public interface IQueryMapper {
 	public static final String RETRIEVE_START_DATE_FOR_VALIDATION = "SELECT psb FROM ProgramScheduledBean psb WHERE psb.scheduledProgramID = (SELECT ab.scheduledProgramID FROM ApplicationBean ab WHERE ab.applicationId = ?1)";
 	
 	
-	//gangotry
+	//Admin Queries(Program Scheduled)
 	
 	public static final String insertScheduleQuery = "INSERT INTO Programs_Scheduled VALUES(ProgSchedule_seq.NEXTVAL,?,?,TO_DATE(?,'DD-MM-YYYY'),TO_DATE(?,'DD-MM-YYYY'),?)";
 	public static final String currentScheIdQuery = "SELECT ProgSchedule_seq.currval FROM dual";

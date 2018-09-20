@@ -31,7 +31,9 @@ public interface IMACDao {
 	/* Updates applicant's status as REJECTED (oops), given his/her application ID */
 	public ApplicationBean reject(Integer applicationId) throws UniversityException;
 
+	/* Retrieves a list of confirmed applicants for a scheduled program ID */
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId);
 	
+	/* Validates the start date */
 	public java.sql.Date getStartDateForValidation(Integer applicationId) throws UniversityException;
 }

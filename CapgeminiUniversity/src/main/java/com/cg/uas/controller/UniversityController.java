@@ -96,13 +96,8 @@ public class UniversityController {
 		{
 			if("admin".equals(role))
 			{
-//				session.setAttribute("user", "admin");
-<<<<<<< HEAD
-				System.out.println("xxxxxxxxxxxxx returs admin");
-=======
-				System.out.println("xxxxxxxxxxxxxxxxxxxxx in admin");
+
 				logger.info("in admin login");
->>>>>>> 8604a8c915c4204082e1896e1541c076fa455ecf
 				return new ModelAndView("AdminHome","user","admin");
 				
 				
@@ -243,7 +238,7 @@ return model;
 	
 
 	/*
-	 * admin controller code
+	 * Admin controller code
 	 * 
 	 * 
 	 * 
@@ -425,14 +420,10 @@ return model;
 	}
 	
 	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-	/*
-	 * gangotry's code
-	 * 
-	 * 
-	 * 
-	*/
+
+	
 	//Adding Schedule
+	
 		@RequestMapping(value = "/prepareAddProgramSchedule.obj")
 		public String prepareAddProgramSchedule(@RequestParam("programName")String programName,Model model){
 			ProgramScheduledBean psb= new ProgramScheduledBean();
