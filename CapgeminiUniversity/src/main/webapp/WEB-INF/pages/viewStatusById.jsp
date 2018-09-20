@@ -48,12 +48,13 @@ body{
 			  <h1>Application Rejected!!</h1>
 			</c:if>
 			
-	 </center>	
+		
 <br>
   <br>
   <br>
   <br>
   <a href="showApplicant.obj">Go to Applicant Home Page</a>
+   </center>
  <br>
  <br>
 
