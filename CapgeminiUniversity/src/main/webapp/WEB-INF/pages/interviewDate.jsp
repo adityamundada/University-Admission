@@ -7,80 +7,65 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<!-- <script src="checkEnteredDate.js"> </script> -->
-		<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/checkEnteredDate.js"></script> --%>
 		<script type = "text/JavaScript">
-		function checkEnteredDate() {
-			/* alert("IN JS") */;
-			var sysDate = new Date();
+			function checkEnteredDate() {
+				var tempSystemDate = new Date();
+				var getFromFormStartDate = document.getElementById("startDate").value;
+				var getFromFormEnteredDate = document.getElementById("enteredDate").value;
 			
-			var tempstDate = document.getElementById("startDate").value;
-			var tempentDate = document.getElementById("enteredDate");
+				var startDateInDateType = new Date(getFromFormStartDate);
+				var enteredDateInDateType = new Date(getFromFormEnteredDate);
 			
-			var stDate = new Date(tempstDate);
-			var entDate = new Date(tempentDate);
+				var formattedSystemDate = new Date(tempSystemDate.getFullYear(), tempSystemDate.getMonth() + 1, tempSystemDate.getDate());
+				var formattedStartDate = new Date(startDateInDateType.getFullYear(), startDateInDateType.getMonth() + 1, startDateInDateType.getDate());
+				var formattedEnteredDate = new Date(enteredDateInDateType.getFullYear(), enteredDateInDateType.getMonth() + 1, enteredDateInDateType.getDate());
 			
-			var SYSTEMDATE = new Date(sysDate.getFullYear(), sysDate.getMonth() + 1, sysDate.getDate());
-			var ENTEREDDATE = new Date(entDate.getFullYear(), entDate.getMonth() + 1, entDate.getDate());
-			var STARTDATE = new Date(stDate.getFullYear(), stDate.getMonth() + 1, stDate.getDate());
-			
-			if(ENTEREDDATE >= SYSTEMDATE && ENTEREDDATE < STARTDATE) {
-				return true;
+				if(formattedEnteredDate >= formattedSystemDate && formattedEnteredDate < formattedStartDate) {
+					return true;
+				}
+				else {
+					alert("Please enter interview date between today's date and start date of program");
+					return false;
+				}
 			}
-			else {
-				alert("Please enter interview date between today's date and start date of program");
-				/* return false; */
-			}
-		}
-      </script>
+      	</script>
 		<title>Interview</title>
-	<style>
-	body {
-		background-color: #323030;
-		color:white;
-	}
-
-</style>
-</head>
-<body>
- <%@ include file = "Header.jsp" %>
-
+		<style>
+			body {
+				background-color: #323030;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+ 		<%@ include file = "Header.jsp" %>
 		<div>
-		
-		<c:url var = "myAction" value="interview.obj"></c:url>
-		<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate();">
-		<h2>Confirm Interview </h2>
-		
-		<td>Application ID:</td>
-  		<td><form:input path="applicationId" value="${applicationBean.applicationId}"/>
-  			<form:errors path="applicationId" style="color:red"> </form:errors>
-  		</td>
-  		<td>Interview date:</td>
-  		<td><form:input type="date" id="enteredDate" path="dateOfInterview"/>
-  			<form:errors path="dateOfInterview" style="color:red"> </form:errors>
-  		</td>
-  		<td>
-  			<input type="hidden" id="startDate" value="${startDate}"/>			 
-  		</td>
-  		<h5><input type="submit" value="Set interview date"></h5>
-		</form:form>
-		
-		
-		
-		
-		
-			<%-- <form action="interview.obj" method="post">
+			<c:url var = "myAction" value="interview.obj"></c:url>
+			<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate();">
+				
 				<h2>Confirm Interview </h2>
-				Application ID: <input type="text" name="appId" value="${applicant}">    
-				Interview date: <input type="text" name="dateOfInterview">    
-				<h5><input type="submit" value="Interview"></h5>
-			</form> --%>
+		
+				<td>Application ID:</td>
+  				<td>
+  					<form:input path="applicationId" value="${applicationBean.applicationId}"/>
+  					<form:errors path="applicationId" style="color:red"> </form:errors>
+  				</td>
+  				<td>Interview date:</td>
+  				<td>
+  					<form:input type="date" id="enteredDate" path="dateOfInterview"/>
+  					<form:errors path="dateOfInterview" style="color:red"> </form:errors>
+  				</td>
+  				
+  				<td><input type="hidden" id="startDate" value="${startDate}"/></td>
+  				
+  				<h5><input type="submit" value="Set interview date"></h5>
+  				
+			</form:form>
         </div>
-		 <a href="machome.obj">MAC Homepage</a>
-		 <br>
-  <br>
-<br>
- <br>
- <br>
-  <%@ include file = "Footer.jsp" %>
+		<a href="machome.obj">MAC Homepage</a>
+		<br>
+  		<br>
+		<br>
+  		<%@ include file = "Footer.jsp" %>
 	</body>
 </html>
