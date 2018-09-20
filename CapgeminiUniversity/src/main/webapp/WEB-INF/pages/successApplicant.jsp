@@ -54,7 +54,7 @@ float: right;}
       </table>
    <br>
   <br>
-  <center>
+  
   <br>
   <br>
   <br>
@@ -62,7 +62,7 @@ float: right;}
   <a href="showApplicant.obj">Go to Applicant Home Page</a>
  <br>
  <br>
- </center>
+
 <br>
  <br>
  <br>
@@ -71,9 +71,3 @@ float: right;}
 </body>
 </html>
 
-<%-- <h1> your details </h1>
-<h1><c:out value="${applicant.applicationId }"></c:out></h1>
-<h2><c:out value="${applicant.fullName }"></c:out></h2>
-<h3><c:out value="${applicant.dateOfBirth }"></c:out></h3>
-<h3><c:out value="${ applicant.status}"></c:out></h3>
-<a href="showHomePage.obj">GO BACK</a> --%>

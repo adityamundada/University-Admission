@@ -7,9 +7,14 @@
 <title>View Admin operations</title>
 <style type="text/css">
 
-body{
-	background-color: #323030;
-	color: white;
+body {
+   background-color:NightRider;
+    font-family: Verdana, sans-serif; margin:0;
+    color: white;
+    background-image: url("images/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   
 }
 
 ul {
@@ -117,15 +122,15 @@ li.dropdown {
   </nav>
 
 </div>
-
-
-
-
+<center>
+<br>
+<h3>Welcome to Admin Portal</h3>
 <br>
 <br>
 <br>
-<a href="adminHome.obj">Go to Admin Home Page</a>
+ <img src="images/admin.jpg"  style="width:170px;height:170px;"></center>
+</center>
 
-
+  
 </body>
 </html>

@@ -11,12 +11,18 @@ body{
 	background-color: #323030;
 	color:white;
 }
-
+a.tag{
+background-color:green;
+    color: white;
+    padding: 1px 1px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;}
 </style>
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 		<h2>View Applicants</h2>
 		<table class="table">
 			<thead>
@@ -32,12 +38,13 @@ body{
 						<td>${scheduleList.scheduledProgramID}</td>
 						<td>${scheduleList.programName}</td>
 						<td>
-							<a href="search.obj?programId=${scheduleList.scheduledProgramID}">View Applicants</a>
+							<a class="tag" href="search.obj?programId=${scheduleList.scheduledProgramID}">View Applicants</a>
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table> 
+		<center>
 		 <br>
   <br>
   <a href="machome.obj">MAC Homepage</a>

@@ -97,8 +97,12 @@ public class UniversityController {
 			if("admin".equals(role))
 			{
 //				session.setAttribute("user", "admin");
+<<<<<<< HEAD
+				System.out.println("xxxxxxxxxxxxx returs admin");
+=======
 				System.out.println("xxxxxxxxxxxxxxxxxxxxx in admin");
 				logger.info("in admin login");
+>>>>>>> 8604a8c915c4204082e1896e1541c076fa455ecf
 				return new ModelAndView("AdminHome","user","admin");
 				
 				
@@ -142,7 +146,7 @@ public class UniversityController {
 		{
 			
 			model.setViewName("error");
-			model.addObject("message","SOMETHING WENT WRONG");
+			model.addObject("message","Given Application Id Doesn't Exist");
 		}
 		else
 		{
@@ -176,20 +180,6 @@ public class UniversityController {
 		return mnv;
 	}
 	
-	/*@RequestMapping("/addApplicant.obj")
-	public ModelAndView addApplicant(@ModelAttribute("applicant") ApplicationBean applicant,BindingResult result) throws UniversityException{
-		ModelAndView model = new ModelAndView();
-		applicant=service.addApplicant(applicant);
-		
-		if(applicant!=null)
-			model.setViewName("successApplicant");
-		else{
-			model.setViewName("error");
-			model.addObject("message", "NO RECORDS FOUND");
-		}
-		return model;
-		
-	}*/
 	@RequestMapping("/showAllScheduledProgram.obj")
 	public ModelAndView showAllScheduledProgram(){
 	ModelAndView model=new ModelAndView();
@@ -215,19 +205,6 @@ public class UniversityController {
 
 return model;
 	}
-	
-		
-
-	/*
-	 * Apply for the program
-	 */
-/*	@RequestMapping("/showApplyOnline")
-	public ModelAndView applyprogram(){
-		ModelAndView mnv=new ModelAndView();
-		mnv.addObject("applicant", new ApplicationBean());
-		mnv.setViewName("ApplyOnline");
-		return mnv;
-	}*/
 	
 	@RequestMapping("/checkRegister")
 	public ModelAndView registerApplicant(@ModelAttribute ("applicant") @Valid ApplicationBean applicant,BindingResult result) throws UniversityException{

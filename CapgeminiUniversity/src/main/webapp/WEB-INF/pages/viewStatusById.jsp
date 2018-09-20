@@ -48,7 +48,7 @@ body{
 			  <h1>Application Rejected!!</h1>
 			</c:if>
 			
-		
+	 </center>	
 <br>
   <br>
   <br>
@@ -56,7 +56,7 @@ body{
   <a href="showApplicant.obj">Go to Applicant Home Page</a>
  <br>
  <br>
- </center>
+
   <%@ include file = "Footer.jsp" %>
 </body>
 </html>

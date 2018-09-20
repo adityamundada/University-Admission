@@ -30,16 +30,22 @@
 			}
       	</script>
 		<title>Interview</title>
-		<style>
-			body {
-				background-color: #323030;
-				color: white;
-			}
-		</style>
-	</head>
-	<body>
- 		<%@ include file = "Header.jsp" %>
-		<div>
+
+	<style>
+body{
+	background-color: #323030;
+	color:white;
+}
+
+</style>
+</head>
+<body>
+ <%@ include file = "Header.jsp" %>
+<%-- <center> --%>
+
+		
+
+		<div align="center">
 			<c:url var = "myAction" value="interview.obj"></c:url>
 			<form:form method="post" modelAttribute="applicationBean" action="${myAction}" onSubmit="return checkEnteredDate();">
 				
@@ -62,10 +68,14 @@
   				
 			</form:form>
         </div>
-		<a href="machome.obj">MAC Homepage</a>
-		<br>
-  		<br>
-		<br>
-  		<%@ include file = "Footer.jsp" %>
+
+<%-- </center> --%>
+		 <a href="machome.obj">MAC Homepage</a>
+		 <br>
+  <br>
+<br>
+ <br>
+ <br>
+  <%@ include file = "Footer.jsp" %>
 	</body>
 </html>

@@ -20,7 +20,9 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 
+
 <form:form modelAttribute="programOfferedBean" action="toUpdateProgramsOffered.obj" method="post">
+<center>
 <table>
 <tr>
 	<td>Enter the Program Name to update:</td>
@@ -35,7 +37,8 @@ body{
 	</td>
 </tr>
 <tr>
-	<td><input type="submit" value="update Program"  /></td>
+
+	<td rowspan="1"><input type="submit" value="update Program"/></td>
 </tr>
 </table>
 </form:form>
@@ -44,7 +47,8 @@ body{
 
 </c:if>
 
-
+</center>
+<br>
 <a href="adminHome.obj">Go to Admin Home</a>
 
 

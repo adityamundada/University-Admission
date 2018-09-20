@@ -19,7 +19,7 @@ body{
  <%@ include file = "Header.jsp" %>
 
 
-
+<center>
 
 <h1>Add Program Details:</h1>
 <c:url var="myAction" value="updateOffered.obj" />
@@ -56,11 +56,9 @@ body{
     	<form:errors path="degreeCertificateOffered" style="color:red" />
   	</td>
 </tr>
-<tr>  
-	<td><input type="submit" value="Update Program"/></td>
-</tr>
-  
 </table>
+<br>
+<input type="submit" value="Update Program"/>
 </form:form>
 <br>
  <c:if test="${programName ne null}">
@@ -68,7 +66,7 @@ body{
 			Program ${programName} is updated successfully.
 			</div>
 </c:if>
-
+</center>
 <br>
 <br>
 <a href="adminHome.obj">Go to Admin Home Page</a>

@@ -27,7 +27,7 @@ body{
 <body>
  <%@ include file = "Header.jsp" %>
 
-
+<center>
 <h1> List of Programs Offered:</h1>
 		<c:if test="${list ne null}">
 			<table>
@@ -53,6 +53,9 @@ body{
 				</c:forEach>
 			</table>
 		</c:if>
+		
+		</center>
+		<br>
 <a href="adminHome.obj">Go to home page</a>
 
  <br>
