@@ -47,15 +47,29 @@ body{
   		</td>
   	</tr>
 	<tr>
+	<%-- <td><s:input path="dateOfBirth" type="date" /></td>
+						<td style="color:red"><c:if test="${dob ne null}"> ${dob}  </c:if> <c:if
+								test="${dob eq null}">
+								<s:errors path="dateOfBirth"></s:errors>
+							</c:if></td>
+						<td></td>  --%>
   		<td>Enter Start date </td>
   		<td><form:input path="startDate" type = "date" />
+  		<p style="color:red">
+  		<c:if test="${dateError ne null}"> ${dateError }  </c:if><p> 
+  		<c:if test="${dateError eq null}">
   			<form:errors path="startDate" style="color:red" ></form:errors>
+  		</c:if>
   		</td>
   	</tr>
   	<tr>
   		<td> Enter End Date </td>
   		<td><form:input path="endDate" type = "date" />
-  			 <form:errors path="endDate" style="color:red"></form:errors>
+  		<p style="color:red">
+  		<c:if test="${dateError ne null}"> ${dateError }  </c:if><p> 
+  		<c:if test="${dateError eq null}">
+  			<form:errors path="endDate" style="color:red" ></form:errors>
+  		</c:if>
   		</td>
   	</tr>
   	<tr>

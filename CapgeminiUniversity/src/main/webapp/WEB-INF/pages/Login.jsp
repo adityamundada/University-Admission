@@ -12,7 +12,10 @@ body {font-family: Arial, Helvetica, sans-serif;
 	color: white;
 }
 
-
+.error {
+color: red;
+font-style: italic;
+}
 
 
 a:link, a:visited {
@@ -43,8 +46,8 @@ a:link, a:visited {
 
 
  <table>
- <tr><td> Enter Login Id:</td><td> <form:input path="userName"/></td></tr>
-<tr><td>  Enter Password:</td><td> <form:password path="password"/><br/></td></tr>
+ <tr><td> Enter Login Id:</td><td> <form:input path="userName"/> <form:errors path="userName" cssClass="error"></form:errors></td></tr>
+<tr><td>  Enter Password:</td><td> <form:password path="password"/> <form:errors path="password" cssClass="error"></form:errors><br/></td></tr>
 </table>
 <br>
 
