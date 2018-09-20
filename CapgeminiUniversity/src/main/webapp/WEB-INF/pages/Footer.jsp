@@ -7,19 +7,22 @@
 <title>Insert title here</title>
 <style>
 footer {
-    background-color: #777;
-    padding: 10px;
+
+    background-color:grey;
+    padding:5px;
     color: white;
+    bottom: 0;
+  
 }
 a:link, a:visited {
-    background-color: #777;
+    background-color:grey;
     color: white;
-    padding: 10px 10px;
+    padding: 5px 5px;
     text-align: center;
-    text-decoration: underline;
+    text-decoration: none;
     display: inline-block;
-   
-}</style>
+}
+</style>
 </head>
 <body><br>
 <br>
@@ -28,14 +31,9 @@ a:link, a:visited {
 Address: DivyaSree TechnoPark, EPIP Zone, Whitefield, Bengaluru, Karnataka 560066       <br>
 Telephone: +91-9876543278, Fax: +91-755 2670562 <br>
  Email: enquiryhelp@university.com<br>
- Web: <a href="index.obj">http://localhost:8180/UniversityProjectApplicant/</a>
-
-
- <br> 
 <center>
 <p>© 2018 All Rights Reserved Terms of Use and Privacy Policy<p>
 </center>
-
 </footer>
 </body>
 </html>

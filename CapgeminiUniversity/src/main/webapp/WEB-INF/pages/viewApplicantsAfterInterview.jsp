@@ -16,6 +16,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
+ <center>
 		<h2>Update status</h2> 
 		<c:set var="status" value="confirmed"></c:set>
 		<table class="table">
@@ -51,11 +52,12 @@ body{
 					</tr>
 				</c:forEach>
 			</tbody>
-		</table>
-		 <a href="machome.obj">MAC Homepage</a>
+		</table>	
+ <br>
+ <br>
+ </center>
+  <a href="machome.obj">MAC Homepage</a>
 		<br>
- <br>
- <br>
   <%@ include file = "Footer.jsp" %>
 	</body>
 </html>

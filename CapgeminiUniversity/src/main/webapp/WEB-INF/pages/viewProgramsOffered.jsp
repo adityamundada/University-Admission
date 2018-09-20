@@ -9,10 +9,10 @@
 <title>View Program Details</title>
 <style type="text/css">
 table{
-	border: 2px solid black;
+	border: 2px solid white;
 }
 tr,th,td{
-	border:1px solid black;
+	border:1px solid white;
 }
 
 
@@ -26,7 +26,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 <h1> List of Programs Offered:</h1>
 		<c:if test="${programsOfferedList ne null}">
 			<table>
@@ -48,9 +48,11 @@ body{
 				</c:forEach>
 			</table>
 		</c:if>
+		<br>
+		<br>
 <a href="adminHome.obj">Go to Admin Home</a>
 
-
+</center>
 
 <br>
  <br>

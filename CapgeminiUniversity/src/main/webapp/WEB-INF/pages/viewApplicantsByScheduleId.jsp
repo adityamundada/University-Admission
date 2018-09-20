@@ -18,6 +18,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
+ <center>
 <h2>Applicant Details</h2> 
 		<table class="table">
     		<thead>
@@ -50,7 +51,7 @@ body{
 				</c:forEach>
 			</tbody>
 </table>
-
+</center>
 <a href="adminHome.obj">Go to Admin Homepage</a>
 
 

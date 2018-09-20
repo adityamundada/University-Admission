@@ -71,8 +71,8 @@ body{
   <form:select path="scheduledProgramID"> 
 	<form:option value="" label="Please Select"/>
 	<form:options items="${ids}" />
-  </form:select></td></tr>
-  <form:errors path="scheduledProgramID" cssClass="error"></form:errors>
+  </form:select>
+  <form:errors path="scheduledProgramID" cssClass="error"></form:errors></td></tr>
  </table>
   <input type="submit" value="Add"/>
   

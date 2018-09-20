@@ -9,10 +9,10 @@
 </head>
 <style>
 body {
-   background-color: #323030;
+   background-color:NightRider;
     font-family: Verdana, sans-serif; margin:0;
     color: white;
-    background-image: url("images/home1.jpg");
+    background-image: url("images/background2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
    
@@ -74,6 +74,9 @@ img {vertical-align: middle;}
   position: absolute;
   top: 0;
 }
+a.nounderline {
+   text-decoration:none;
+} 
 
 
 /* The dots/bullets/indicators */
@@ -118,24 +121,13 @@ img {vertical-align: middle;}
     box-sizing: border-box;
 }
 
-.column {
-    float: center;
-    width: 33.33%;
-    padding: 20px;
-}
-
-/* Clearfix (clear floats) */
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
 
 </style>
 
 <body  >
  
  <%@ include file = "Header.jsp" %>
+  <marquee behavior="alternate">Welcome To University Admission Portal</marquee>
  
 <div class="slideshow-container">
 
@@ -170,20 +162,24 @@ img {vertical-align: middle;}
 </div>
 <script>
 var slideIndex = 1;
+var timer=null;
 showSlides(slideIndex);
 
 function plusSlides(n) {
+	 clearTimeout(timer);
   showSlides(slideIndex += n);
 }
 
-function currentSlide(n) {
+ function currentSlide(n) {
+	 clearTimeout(timer);
   showSlides(slideIndex = n);
-}
+} 
 
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
+  if (n==undefined){n = ++slideIndex}
   if (n > slides.length) {slideIndex = 1}    
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -194,35 +190,23 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
+  timer = setTimeout(showSlides, 2000);
 }
 </script>
  <center>
+
+
+    <br>
+  <a class="nounderline" href="showLogin.obj">Login</a><br/><br>
+ 
+  <a href="showApplicant.obj">Applicant Home Page</a><br/>
  <p>
-<br>
 Our Vision: "We looks forward to becoming a global centre for technical and professional knowledge."
 <br>
-
-<br>
-Our Mission: "To produce technical professionals abreast with competence,logical mindset,moral and ethical values and inner strength synchronous with the futuristic requirement of global business so as to strengthen the national economy"</p></center>
-<center>
-<div class="row">
-  <div class="column">
-    <img src="images/loginnicon.png"  style="width:100%" ><br>
-    <center>
-  <a href="showLogin.obj">Login</a><br/>
-  </center>
-  </div>
- 
-  <div class="column">
-    <img src="images/apllicant1.png"  style="width:100%" >
-    <br>
-      <center>
-      <a href="showApplicant.obj">Applicant</a><br/>
-         </center>
-  </div>
- 
-</div> 
+Our Mission: "To produce technical professionals abreast with competence,logical mindset,moral and ethical values and inner strength synchronous with the futuristic requirement of global business so as to strengthen the national economy"
+</p>
 </center>
+
  <br>
  <br>
  <br>

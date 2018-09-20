@@ -11,40 +11,43 @@ body{
 	color:white;
 }
 img {
-    float: right;
+    float: center;
+}
+a:link, a:visited {
+    background-color:grey;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
 }
 
 </style>
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
+ <br>
+ <center><h3>Welcome MAC Portal</h3><br>
+ <img src="images/mac.jpg"  style="width:170px;height:170px;"></center>
+ 
+<br>
+<br>
+<center>
 
 		<a href="showScheduledPrograms.obj">SHOW SCHEDULED PROGRAMS</a> 
-		<br>    	
+		<br><br>    	
 		<a href="viewAllApplicants.obj">UPDATE STATUS OF APPLICANT AFTER INTERVIEW</a>
-		<br>  
+		<br> <br>
 		<a href="viewAllConfirmedApplicants.obj">VIEW ALL CONFIRMED APPLICANTS</a>
-		<br>  
+		<br> <br> 
 		<a href="logout.obj">LOGOUT</a>
 		<br>
   <br>
+ </center>
 <br>
-<h3>MAC</h3><br>
- <img src="images/mac.jpg"  style="width:170px;height:170px;margin-left:15px;">
- <ul type="square">
- <li>Login into the system using his/her credentials.<br></li>
- <li>
- View applications for a specific program.<br></li>
- <li>Accept/Reject an application on the basis of details of the applicant. If
- accepted, fill in the scheduled date for an interview of the applicant before confirming the
- applicant to take the program.<br></li>
- 
-<li>After the interview, update the status of the application to Confirmed/Rejected.</li>
-</ul>
- 
-<br>
- <br>
- <br>
-  <a href="machome.obj">MAC Homepage</a>
+
+
+  <a href="machome.obj">MAC Homepage</a><br>
+  <%@ include file = "Footer.jsp" %>
 	</body>
 </html>

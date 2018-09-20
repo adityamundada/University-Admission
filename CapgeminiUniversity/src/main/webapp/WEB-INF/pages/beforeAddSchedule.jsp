@@ -19,15 +19,18 @@ body{
 	background-color: #323030;
 	color:white;
 }
+table{
+	border: 2px solid white;
+}
 
 </style>
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 <h1> List of Programs Offered:</h1>
 		<c:if test="${list ne null}">
-			<table>
+			<table class="table">
 				<tr>
 					<th>Program Name</th>
 					<th>Description</th>
@@ -50,7 +53,12 @@ body{
 				</c:forEach>
 			</table>
 		</c:if>
+		</center>
+		<br>
 <a href="adminHome.obj">Go to home page</a>
+<br>
+<br>
+  <%@ include file = "Footer.jsp" %>
 
 </body>
 </html>

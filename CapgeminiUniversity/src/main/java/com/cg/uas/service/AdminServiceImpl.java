@@ -42,6 +42,7 @@ public class AdminServiceImpl implements IAdminService{
 
 	@Override
 	public boolean updateOffered(ProgramOfferedBean bean) throws UniversityException{
+		System.out.println("------------------------------------in offererd service");
 		return adminDao.updateOffered(bean);
 
 	}

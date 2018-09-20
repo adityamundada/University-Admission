@@ -18,7 +18,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 		<div>
 		
 		<c:url var = "myAction" value="interview.obj"></c:url>
@@ -47,6 +47,7 @@ body{
 				<h5><input type="submit" value="Interview"></h5>
 			</form> --%>
         </div>
+        </center>
 		 <a href="machome.obj">MAC Homepage</a>
 		 <br>
   <br>

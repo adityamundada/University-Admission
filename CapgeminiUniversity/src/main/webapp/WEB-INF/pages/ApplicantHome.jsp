@@ -17,11 +17,14 @@ body{
  <br>
 <br>
 <br>
-<a href="showAllScheduledProgram.obj">Show All Scheduled Program</a>
- <a href="showApplyOnline.obj">Apply Online</a>
+<center>
+<a href="showAllScheduledProgram.obj">Show All Scheduled Program</a><br>
+<br>
+ <a href="showApplyOnline.obj">Apply Online</a><br>
+ <br>
   <a href="showCheckStatus.obj">Check Application Status</a>
   
-
+</center>
 <br>
 <br>
 <br>
