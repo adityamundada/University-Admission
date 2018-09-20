@@ -14,13 +14,16 @@
 body{
 	background-color: #323030;
 	color:white;
+	background-image: url("images/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 </style>
 </head>
 <body 	>
  <%@ include file = "Header.jsp" %>
-
+<center>
 <h1>Add Program Details:</h1>
 <c:url var="myAction" value="validateProgramOfferedDetails.obj" />
 
@@ -58,11 +61,11 @@ body{
     	<form:errors path="degreeCertificateOffered" style="color:red" />
   	</td>
 </tr>
-<tr>  
-	<td><input type="submit" value="Add Program"/></td>
-</tr>
-  
 </table>
+	<input type="submit" value="Add Program"/>
+
+  
+
 </form:form>
 <br>
  <c:if test="${programName ne null}">
@@ -76,10 +79,16 @@ body{
 			<p style="color:red">${errorMessage}</p>
 			</div>
 </c:if>
-
+</center>
 <br>
 <br>
 <br>
 <a href="adminHome.obj">Go to Admin Home Page</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+  <%@ include file = "Footer.jsp" %>
 </body>
 </html>

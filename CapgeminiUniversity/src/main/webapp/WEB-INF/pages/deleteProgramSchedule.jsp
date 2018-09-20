@@ -17,7 +17,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 
 <h1>Delete Program Schedule</h1>
 <c:if test="${programScheduledBean ne null}">
@@ -50,8 +50,11 @@ body{
 <c:if test="${errorMsg ne null }">
 	<p style="color:red">${errorMsg}</p>
 </c:if>
-
+<center>
+<br>
  <a href="adminHome.obj">Go to home page</a>
- 
+ <br>
+ <br>
+   <%@ include file = "Footer.jsp" %>
 </body>
 </html>

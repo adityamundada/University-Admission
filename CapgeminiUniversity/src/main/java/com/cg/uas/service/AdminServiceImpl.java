@@ -1,6 +1,10 @@
 package com.cg.uas.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -42,6 +46,7 @@ public class AdminServiceImpl implements IAdminService{
 
 	@Override
 	public boolean updateOffered(ProgramOfferedBean bean) throws UniversityException{
+		System.out.println("------------------------------------in offererd service");
 		return adminDao.updateOffered(bean);
 
 	}
@@ -78,6 +83,41 @@ public class AdminServiceImpl implements IAdminService{
 	@Override
 	public List<ProgramScheduledBean> viewProgramsScheduled() throws UniversityException{
 		return adminDao.viewProgramsScheduled();
+	}
+	
+	@Override
+	public String isValidAddSchedule(java.sql.Date startDate, java.sql.Date endDate,int duration) throws UniversityException {
+	
+		String startDateinString = startDate.toString();
+		String endDateinString = endDate.toString();
+		Date d1;
+		Date d2;
+		String errorMessage = null;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			d1 = format.parse(startDateinString);
+			d2 = format.parse(endDateinString);
+		} catch (ParseException e) {
+			throw new UniversityException("parsing error. Invalid date");
+		}	
+		
+		Calendar startCal = new GregorianCalendar();
+		Calendar endCal = new GregorianCalendar();
+		startCal.setTime(d1);
+		endCal.setTime(d2);
+		int diffYear = endCal.get(Calendar.YEAR) - startCal.get(Calendar.YEAR);
+		int diffMonth = diffYear * 12 + endCal.get(Calendar.MONTH)
+				- startCal.get(Calendar.MONTH);
+		int diffDays = endCal.get(Calendar.DAY_OF_MONTH)
+				- startCal.get(Calendar.DAY_OF_MONTH);
+	
+	
+		if (diffMonth == duration && diffDays == 0) {
+	
+		} else {
+			errorMessage += "\nDifference of entered da`tes does not match with duration of corresponding program";
+		}
+		return errorMessage; 
 	}
 }
  

@@ -14,13 +14,16 @@ body{
 	background-color: #323030;
 	color:white;
 }
+table{
+	border: 2px solid white;
+}
 
 </style>
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
 
-
+<center>
 <h2>View Applicants</h2>
 		<table class="table">
 			<thead>
@@ -42,9 +45,13 @@ body{
 				</c:forEach>
 			</tbody>
 		</table> 
+		</center>
+		<br>
 		<a href="adminHome.obj">Go to Admin Homepage</a>
 
-
+<br>
+<br>
+  <%@ include file = "Footer.jsp" %>
 
 </body>
 </html>

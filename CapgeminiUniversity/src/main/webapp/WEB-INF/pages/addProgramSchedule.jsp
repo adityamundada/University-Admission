@@ -12,14 +12,17 @@
 body{
 	background-color: #323030;
 	color:white;
+	 background-image: url("images/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 </style>
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
+<center>
 
-<h1></h1>
 <c:url var = "myAction" value="addProgramSchedule.obj"></c:url>
 
 <form:form method="post" modelAttribute="programScheduledBean" action="${myAction}">
@@ -61,19 +64,29 @@ body{
   			<form:errors path="sessionsPerWeek" style="color:red"></form:errors>
   		</td>
   	</tr>
-  	<tr>
-  		<td><input type="submit" value="Add"/></td>
-  	</tr>
+  	
+  		
+  
   </table>
+  <br>
+  
+  <input type="submit" value="Add"/>
 </form:form>
 
 <c:if test="${programAdded ne null}" >
 	<h2>Program schedule added successfully.</h2> <br>
 </c:if>
+</center>
 <br>
 <br>
 <br>
 <a href="adminHome.obj">Go to Admin Home Pagee</a>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+  <%@ include file = "Footer.jsp" %>
 </body>
 </html>

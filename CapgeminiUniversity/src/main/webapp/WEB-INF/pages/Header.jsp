@@ -7,7 +7,13 @@
 <title>Header</title>
 <style>
 body {
-  margin: 0;
+   background-color:NightRider;
+    font-family: Verdana, sans-serif; margin:0;
+    color: white;
+    background-image: url("images/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   
 }
 
 /* Style the header */
@@ -19,10 +25,12 @@ body {
 }
 
 .header h1 {
-  position: relative;
+float: center;
+  position:relative;
   top: 18px;
   left: 10px;
   color: white;
+  
   
 }
 ul {
@@ -39,32 +47,18 @@ ul li {
 ul li:last-child{
     padding-right: 10px;
 }
-#home{
-	background-color: grey;
-    color: black;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-   
-}
 
-a{
-	
-	color:white;
-}
-a:hover, a:active {
-    background-color: green;
-    color:white;
-} 
+
+
+ 
 </style>
 </head>
 <body>
 <div class="header">
 <img src="images/logo.png" alt="logo">
-<h1>University Admission Portal </h1>
+<center><h1 style="font-family:arial,serif; color:cyan;">University Admission Portal </h1></center>
 <ul>
-        <li id="home"> <a href="index.obj"> Home</a></li> 
+       <li> <a href="index.obj"><img src="images/homeimage.png" width="42" height="42"></a></li>  
        
      </ul>
 

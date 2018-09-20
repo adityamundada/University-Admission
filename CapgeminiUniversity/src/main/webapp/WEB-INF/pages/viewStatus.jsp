@@ -11,8 +11,8 @@
 
 <title>View Status</title>
 <style>
-a {color: #ffb3b3}
- h2 {color: #e6e6ff}
+
+ h2 {color: white}
 body{
 	background-color: #323030;
 	
@@ -40,8 +40,12 @@ body{
 <input type="number" name="applicationId" required >
 <input type="submit">
 </form:form> 
- </center> 
+<br>
+  <br>
+     </center> 
+  <br>
   <a href="showApplicant.obj">Back to Applicant Page</a>
+
   <br>
   <br>
   <br>

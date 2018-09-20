@@ -17,7 +17,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 <h1>View Program Schedule By Date</h1>
 <c:url var = "myAction" value="viewByDateProgramSchedule.obj"></c:url>
 
@@ -61,6 +61,11 @@ body{
 	</div>
 </c:if>
 <br>
+ <br>
+ </center>
+ <br>
+ <br>
+ <a href="adminHome.obj">Go to home page</a>
  <br>
  <br>
   <%@ include file = "Footer.jsp" %>

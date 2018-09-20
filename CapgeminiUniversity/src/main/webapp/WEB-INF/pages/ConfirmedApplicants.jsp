@@ -16,7 +16,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 		<table class="table">
     		<thead>
 				<tr>
@@ -37,6 +37,11 @@ body{
 				</c:forEach>
 			</tbody>
 		</table>
+		</center>
+		<br>
 		 <a href="machome.obj">MAC Homepage</a>
+		 <br>
+		 <br>
+		   <%@ include file = "Footer.jsp" %>
 	</body>
 </html>

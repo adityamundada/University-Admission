@@ -19,7 +19,7 @@ body{
 </head>
 <body>
  <%@ include file = "Header.jsp" %>
-
+<center>
 Enter the Program Name to delete:
 <form:form modelAttribute="programOfferedBean" action="toDeleteProgramsOffered.obj" method="post">
 
@@ -31,10 +31,13 @@ Enter the Program Name to delete:
 <h3 style="color:red">	${errorMessage }</h3>
 
 </c:if>
-
+</center>
+<br>
 
 <a href="adminHome.obj">Go to home page</a>
-
+<br>
+<br>
+  <%@ include file = "Footer.jsp" %>
 
 
 

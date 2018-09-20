@@ -10,19 +10,15 @@
 body {font-family: Arial, Helvetica, sans-serif;
 	background-color: #323030;
 	color: white;
-	
 }
-}
-form {border: 3px solid #f1f1f1;}
+
 
 
 
 a:link, a:visited {
-    background-color: #f44336;
     color: white;
     padding: 14px 25px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
    
 }
@@ -50,6 +46,8 @@ a:link, a:visited {
  <tr><td> Enter Login Id:</td><td> <form:input path="userName"/></td></tr>
 <tr><td>  Enter Password:</td><td> <form:password path="password"/><br/></td></tr>
 </table>
+<br>
+
   <input type="submit" value="Login"/>
    
 </form:form>
