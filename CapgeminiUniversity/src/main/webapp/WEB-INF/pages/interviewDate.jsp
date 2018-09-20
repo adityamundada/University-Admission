@@ -6,7 +6,32 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<script src="checkEnteredDate.js"> </script>
+		<!-- <script src="checkEnteredDate.js"> </script> -->
+		<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/checkEnteredDate.js"></script> --%>
+		<script type = "text/JavaScript">
+		function checkEnteredDate() {
+			/* alert("IN JS") */;
+			var sysDate = new Date();
+			
+			var tempstDate = document.getElementById("startDate").value;
+			var tempentDate = document.getElementById("enteredDate");
+			
+			var stDate = new Date(tempstDate);
+			var entDate = new Date(tempentDate);
+			
+			var SYSTEMDATE = new Date(sysDate.getFullYear(), sysDate.getMonth() + 1, sysDate.getDate());
+			var ENTEREDDATE = new Date(entDate.getFullYear(), entDate.getMonth() + 1, entDate.getDate());
+			var STARTDATE = new Date(stDate.getFullYear(), stDate.getMonth() + 1, stDate.getDate());
+			
+			if(ENTEREDDATE >= SYSTEMDATE && ENTEREDDATE < STARTDATE) {
+				return true;
+			}
+			else {
+				alert("Please enter interview date between today's date and start date of program");
+				/* return false; */
+			}
+		}
+      </script>
 		<title>Interview</title>
 	<style>
 	body {
@@ -26,7 +51,7 @@
 		<h2>Confirm Interview </h2>
 		
 		<td>Application ID:</td>
-  		<td><form:input path="applicationId" id="enteredDate" value="${applicationBean.applicationId}"/>
+  		<td><form:input path="applicationId" value="${applicationBean.applicationId}"/>
   			<form:errors path="applicationId" style="color:red"> </form:errors>
   		</td>
   		<td>Interview date:</td>
