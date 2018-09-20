@@ -57,7 +57,7 @@ public class AdminDaoImpl implements IAdminDao{
 	@Override
 	public List<ProgramOfferedBean> viewProgramsOffered() throws UniversityException {
 
-		TypedQuery<ProgramOfferedBean> query=entityManager.createQuery("select p from ProgramOfferedBean p",ProgramOfferedBean.class);
+		TypedQuery<ProgramOfferedBean> query=entityManager.createQuery(IQueryMapper.VIEW_PROGRAMS_OFFERED,ProgramOfferedBean.class);
 		return query.getResultList();
 	}
 
@@ -117,12 +117,10 @@ public class AdminDaoImpl implements IAdminDao{
 			return false;
 		}else{
 
-			//ProgramScheduledBean scheduleBean = entityManager.find(ProgramScheduledBean.class, name);
-			TypedQuery<ProgramScheduledBean> query=entityManager.createQuery("select p from ProgramScheduledBean p where p.programName =:programName  ",ProgramScheduledBean.class);
+			TypedQuery<ProgramScheduledBean> query=entityManager.createQuery(IQueryMapper.DELETE_PROGRAMS_OFFERED,ProgramScheduledBean.class);
 			query.setParameter("programName", name);
 			List<ProgramScheduledBean> scheduleBean  =query.getResultList();
 			if(scheduleBean.size()==0){
-				//System.out.println(scheduleBean);
 				entityManager.remove(bean);
 				return true;
 			}else{
@@ -152,7 +150,7 @@ public class AdminDaoImpl implements IAdminDao{
 		else{
 			
 			
-			TypedQuery<ApplicationBean> query=entityManager.createQuery("select a from ApplicationBean a where a.scheduledProgramID =:scheduleId  ",ApplicationBean.class);
+			TypedQuery<ApplicationBean> query=entityManager.createQuery(IQueryMapper.DELETE_PROGRAMS_SCHEDULED,ApplicationBean.class);
 			query.setParameter("scheduleId", scheduledProgramID);
 			 List<ApplicationBean> applicationList =query.getResultList();
 			 System.out.println("size is "+ applicationList.size());
@@ -180,7 +178,7 @@ public class AdminDaoImpl implements IAdminDao{
 	@Override
 	public List<ProgramScheduledBean> viewSchedule(Date startDate, Date endDate)
 			throws UniversityException {
-		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery("SELECT p FROM ProgramScheduledBean p WHERE start_date >=:startDate AND end_date <=:endDate",ProgramScheduledBean.class);
+		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery(IQueryMapper.VIEW_SCHEDULE_BYDATE,ProgramScheduledBean.class);
 		query.setParameter("startDate", startDate);
 		query.setParameter("endDate", endDate);
 		return query.getResultList();
@@ -216,7 +214,7 @@ public class AdminDaoImpl implements IAdminDao{
 	@Override
 	public List<ProgramScheduledBean> viewProgramsScheduled() throws UniversityException {
 
-		TypedQuery<ProgramScheduledBean> query=entityManager.createQuery("select p from ProgramScheduledBean p",ProgramScheduledBean.class);
+		TypedQuery<ProgramScheduledBean> query=entityManager.createQuery(IQueryMapper.VIEW_PROGRAMS_SCHEDULED,ProgramScheduledBean.class);
 		return query.getResultList();
 	}
 	

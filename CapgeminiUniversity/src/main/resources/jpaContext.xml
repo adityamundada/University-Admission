@@ -47,7 +47,7 @@
                   value="org.hibernate.dialect.Oracle10gDialect"/>
                   <entry key="hibernate.hbm2ddl.auto"
                    value="create/update"/>
-                   <entry key="hibernate.show_sql" value="true" />
+                   <!-- <entry key="hibernate.show_sql" value="true" /> -->
                    <entry key="hibernate.format_sql" value="true" />
                    
               </map>

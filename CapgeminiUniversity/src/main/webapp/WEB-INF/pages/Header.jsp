@@ -65,7 +65,7 @@ a{
 <center><h1 style="font-family:arial,serif; color:cyan;">University Admission Portal </h1></center>
 <ul>
 
-       <li> <a href="index.obj"><img class ="homeLogo" src="images/homeimage.png" ></a></li>  
+       <li> <a href="index.obj"><img class ="homeLogo" src="images/homeimage.png" ></img></a></li>  
        
 </ul>
 

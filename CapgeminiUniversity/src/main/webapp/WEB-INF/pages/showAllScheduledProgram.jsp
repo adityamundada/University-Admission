@@ -23,12 +23,12 @@ body{
 <center>
 <table border=1>
 <tr>
-		<th bgcolor="red">Program Id</th>
-		<th bgcolor="red">Program Name</th>
-		<th bgcolor="red">Location</th>
-		<th bgcolor="red">Start Date</th>
-		<th bgcolor="red">End Date</th>
-		<th bgcolor="red">Sessions Per Week</th>
+		<th bgcolor="#c2c2d6">Program Id</th>
+		<th bgcolor="#c2c2d6">Program Name</th>
+		<th bgcolor="#c2c2d6">Location</th>
+		<th bgcolor="#c2c2d6">Start Date</th>
+		<th bgcolor="#c2c2d6">End Date</th>
+		<th bgcolor="#c2c2d6">Sessions Per Week</th>
 </tr>
 <c:forEach var="scheduleList" items="${scheduleList}">
 <tr>

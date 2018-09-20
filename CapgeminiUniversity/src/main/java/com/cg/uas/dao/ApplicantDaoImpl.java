@@ -94,7 +94,7 @@ public class ApplicantDaoImpl implements IApplicantDao {
 	
 	@Override
 	public List<ProgramScheduledBean> viewAllScheduledProgram() throws UniversityException {
-		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery("SELECT p from ProgramScheduledBean p", ProgramScheduledBean.class);
+		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery(IQueryMapper.VIEW_SCHEDULED_PROGRAMS, ProgramScheduledBean.class);
 		List<ProgramScheduledBean> list = query.getResultList();
 		return list;
 	}

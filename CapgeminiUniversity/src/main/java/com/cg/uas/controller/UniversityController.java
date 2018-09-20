@@ -33,7 +33,7 @@ public class UniversityController {
 	
 	public UniversityController() {
 		//PropertyConfigurator.configure("src//log4j.properties");
-		System.out.println("------------------------------- in const");
+		
 	}
 	//
 	@Autowired
@@ -96,13 +96,7 @@ public class UniversityController {
 			if("admin".equals(role))
 			{
 
-<<<<<<< HEAD
-				logger.info("in admin login");
-=======
->>>>>>> e65da05e12a14d6f378de9e41bdb1a2e02ea0a6e
 				return new ModelAndView("AdminHome","user","admin");
-				
-				
 			}
 				else if("mac".equals(role))
 				{
