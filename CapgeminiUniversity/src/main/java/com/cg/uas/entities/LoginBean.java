@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "Users")
 public class LoginBean implements Serializable {
@@ -14,8 +16,10 @@ public class LoginBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 		@Id
 		@Column(name="login_id")
+		@NotEmpty(message = "Please enter user name")
 		private String userName;
 		@Column(name="password")
+		@NotEmpty(message = "Please enter password")
 		private String password;
 		@Column(name="role")
 		private String role;

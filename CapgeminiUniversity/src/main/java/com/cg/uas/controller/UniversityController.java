@@ -432,8 +432,15 @@ return model;
 		@RequestMapping(value = "/addProgramSchedule.obj")
 		public ModelAndView addProgramSchedule(@ModelAttribute("programScheduledBean")@Valid ProgramScheduledBean programScheduledBean,BindingResult result ) throws UniversityException{
 			ModelAndView mnv = new ModelAndView();
-			if(result.hasErrors()){
-				//mnv.addObject("message", "Error Occured");
+			Date sd = programScheduledBean.getStartDate();
+			Date ed = programScheduledBean.getEndDate();
+			if(result.hasErrors() || sd == null || ed == null){
+				if(sd == null){
+					mnv.addObject("dateError", "Start Date is mandatory ");
+				}
+				if(ed == null){
+					mnv.addObject("dateError", "End Date is mandatory ");
+				}
 				mnv.addObject("programScheduledBean",programScheduledBean );
 				mnv.setViewName("addProgramSchedule");
 			}else{
