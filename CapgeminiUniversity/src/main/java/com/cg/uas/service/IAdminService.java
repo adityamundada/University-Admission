@@ -28,5 +28,6 @@ public interface IAdminService {
 	
 	public List<ProgramScheduledBean> viewProgramsScheduled() throws UniversityException;
 
-	
+	public String isValidAddSchedule(java.sql.Date startDate, java.sql.Date endDate,int duration) throws UniversityException;
+
 }
