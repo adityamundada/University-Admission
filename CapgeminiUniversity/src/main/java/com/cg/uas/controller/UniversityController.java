@@ -7,8 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,10 +32,10 @@ import com.cg.uas.service.IMACService;
 public class UniversityController {
 	
 	public UniversityController() {
-		PropertyConfigurator.configure("src//log4j.properties");
+		//PropertyConfigurator.configure("src//log4j.properties");
 		System.out.println("------------------------------- in const");
 	}
-	Logger logger = Logger.getRootLogger();
+	//
 	@Autowired
 	private IApplicantService applicantService;
 	
@@ -97,12 +96,10 @@ public class UniversityController {
 			if("admin".equals(role))
 			{
 //				session.setAttribute("user", "admin");
-<<<<<<< HEAD
-				System.out.println("xxxxxxxxxxxxx returs admin");
-=======
-				System.out.println("xxxxxxxxxxxxxxxxxxxxx in admin");
-				logger.info("in admin login");
->>>>>>> 8604a8c915c4204082e1896e1541c076fa455ecf
+
+				
+				//logger.info("in admin login");
+
 				return new ModelAndView("AdminHome","user","admin");
 				
 				

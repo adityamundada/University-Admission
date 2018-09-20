@@ -47,8 +47,10 @@ table{
 		</table> 
 		</center>
 		<br>
+		<br>
 		<a href="adminHome.obj">Go to Admin Homepage</a>
-
+<br>
+<br>
 <br>
 <br>
   <%@ include file = "Footer.jsp" %>

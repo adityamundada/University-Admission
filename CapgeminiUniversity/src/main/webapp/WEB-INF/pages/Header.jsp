@@ -58,7 +58,7 @@ ul li:last-child{
 <img src="images/logo.png" alt="logo">
 <center><h1 style="font-family:arial,serif; color:cyan;">University Admission Portal </h1></center>
 <ul>
-       <li> <a href="index.obj"><img src="images/homeimage.png" width="42" height="42"></a></li>  
+       <li> <a href="index.obj"><img  src="images/homeimage.png"></a></li>  
        
      </ul>
 
