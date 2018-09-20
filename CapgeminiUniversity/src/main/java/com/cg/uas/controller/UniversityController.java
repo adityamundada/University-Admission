@@ -7,8 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,10 +32,10 @@ import com.cg.uas.service.IMACService;
 public class UniversityController {
 	
 	public UniversityController() {
-		PropertyConfigurator.configure("src//log4j.properties");
+		//PropertyConfigurator.configure("src//log4j.properties");
 		System.out.println("------------------------------- in const");
 	}
-	Logger logger = Logger.getRootLogger();
+	//
 	@Autowired
 	private IApplicantService applicantService;
 	
@@ -97,7 +96,10 @@ public class UniversityController {
 			if("admin".equals(role))
 			{
 
+<<<<<<< HEAD
 				logger.info("in admin login");
+=======
+>>>>>>> e65da05e12a14d6f378de9e41bdb1a2e02ea0a6e
 				return new ModelAndView("AdminHome","user","admin");
 				
 				
@@ -369,7 +371,7 @@ return model;
 			if(offeredFlag==true){
 				model.setViewName("deleted");
 			}else{
-				model.addObject("message", "Cannot be deleted");
+				model.addObject("message", "Program cannot be deleted since it is already scheduled");
 				model.setViewName("error");
 			}
 		} catch (UniversityException e) {
@@ -441,11 +443,24 @@ return model;
 				mnv.addObject("programScheduledBean",programScheduledBean );
 				mnv.setViewName("addProgramSchedule");
 			}else{
-				//System.out.println(programScheduledBean.setProgramName(prprogramName));
-				ProgramScheduledBean bean  = adminService.addSchedule(programScheduledBean);
-				mnv.addObject("programScheduledBean", new ProgramScheduledBean());
-				mnv.addObject("programAdded", bean);
-				mnv.setViewName("addProgramSchedule");
+				int duration = 0;
+				ProgramOfferedBean programOfferedBean =  adminService.findoffered(programScheduledBean.getProgramName());
+				if(programOfferedBean !=null){
+					duration = programOfferedBean.getDuration();
+					//System.out.println("xxxxxxxxxxxxxxxxxxxx duration " +duration);
+				}
+				String errorMessage = adminService.isValidAddSchedule(programScheduledBean.getStartDate(), programScheduledBean.getEndDate(), duration);
+				//System.out.println("------------------------------ error msg " + errorMessage);
+				if(errorMessage !=null){
+					mnv.addObject("message", errorMessage);
+					mnv.addObject("programScheduledBean",programScheduledBean );
+					mnv.setViewName("addProgramSchedule");
+				}else{
+					ProgramScheduledBean bean  = adminService.addSchedule(programScheduledBean);
+					//mnv.addObject("programScheduledBean", new ProgramScheduledBean());
+					mnv.addObject("programAdded", bean);
+					mnv.setViewName("addProgramSchedule");
+				}
 			}
 			
 			return mnv;
