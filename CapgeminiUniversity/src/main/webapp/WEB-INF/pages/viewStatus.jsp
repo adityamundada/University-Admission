@@ -42,10 +42,10 @@ body{
 </form:form> 
 <br>
   <br>
-     </center> 
+
   <br>
   <a href="showApplicant.obj">Back to Applicant Page</a>
-
+     </center> 
   <br>
   <br>
   <br>

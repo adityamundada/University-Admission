@@ -31,7 +31,9 @@ public interface IMACService {
 	/* Updates applicant's status as REJECTED (oops), given his/her application ID */
 	public ApplicationBean reject(Integer applicationId) throws UniversityException;
 
+    /* View all confirmed applicants */
 	public List<ParticipantBean> viewConfirmedApplicants(String scheduledProgramId) throws UniversityException;
-	
+
+	/* Validates start date */
 	public java.sql.Date getStartDateForValidation(Integer applicationId) throws UniversityException;
 }
