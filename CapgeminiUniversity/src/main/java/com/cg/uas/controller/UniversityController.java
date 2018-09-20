@@ -95,10 +95,6 @@ public class UniversityController {
 		{
 			if("admin".equals(role))
 			{
-//				session.setAttribute("user", "admin");
-
-				
-				//logger.info("in admin login");
 
 				return new ModelAndView("AdminHome","user","admin");
 				
@@ -447,11 +443,24 @@ return model;
 				mnv.addObject("programScheduledBean",programScheduledBean );
 				mnv.setViewName("addProgramSchedule");
 			}else{
-				//System.out.println(programScheduledBean.setProgramName(prprogramName));
-				ProgramScheduledBean bean  = adminService.addSchedule(programScheduledBean);
-				mnv.addObject("programScheduledBean", new ProgramScheduledBean());
-				mnv.addObject("programAdded", bean);
-				mnv.setViewName("addProgramSchedule");
+				int duration = 0;
+				ProgramOfferedBean programOfferedBean =  adminService.findoffered(programScheduledBean.getProgramName());
+				if(programOfferedBean !=null){
+					duration = programOfferedBean.getDuration();
+					//System.out.println("xxxxxxxxxxxxxxxxxxxx duration " +duration);
+				}
+				String errorMessage = adminService.isValidAddSchedule(programScheduledBean.getStartDate(), programScheduledBean.getEndDate(), duration);
+				//System.out.println("------------------------------ error msg " + errorMessage);
+				if(errorMessage !=null){
+					mnv.addObject("message", errorMessage);
+					mnv.addObject("programScheduledBean",programScheduledBean );
+					mnv.setViewName("addProgramSchedule");
+				}else{
+					ProgramScheduledBean bean  = adminService.addSchedule(programScheduledBean);
+					//mnv.addObject("programScheduledBean", new ProgramScheduledBean());
+					mnv.addObject("programAdded", bean);
+					mnv.setViewName("addProgramSchedule");
+				}
 			}
 			
 			return mnv;
