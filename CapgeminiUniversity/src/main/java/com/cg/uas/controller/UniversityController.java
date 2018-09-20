@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,13 +31,7 @@ import com.cg.uas.service.IMACService;
 @Controller
 public class UniversityController {
 	
-/*	public UniversityController() {
-		PropertyConfigurator.configure("src//log4j.properties");
-		System.out.println("------------------------------- in const");
-	}
-	Logger logger = Logger.getRootLogger();*/
-	
-	static final Logger logger = Logger.getLogger(UniversityController.class);
+	public static final Logger logger = Logger.getLogger(UniversityController.class);
 	
 	@Autowired
 	private IApplicantService applicantService;
