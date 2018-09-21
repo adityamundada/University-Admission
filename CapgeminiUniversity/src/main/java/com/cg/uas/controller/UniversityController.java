@@ -85,7 +85,7 @@ public class UniversityController {
 	public ModelAndView checkLogin(@ModelAttribute("login") @Valid LoginBean l,BindingResult result,Model model,HttpSession session)  throws UniversityException   
 	{
 		String role=applicantService.checkuser(l);
-
+	
 		if(role==null)
 		{
 		
@@ -100,7 +100,7 @@ public class UniversityController {
 			}
 				else if("mac".equals(role))
 				{
-//					session.setAttribute("user", "mac");
+
 					return new ModelAndView("MACHome","user","mac");
 				}
 				else
@@ -200,8 +200,11 @@ return model;
 	@RequestMapping("/checkRegister")
 	public ModelAndView registerApplicant(@ModelAttribute ("applicant") @Valid ApplicationBean applicant,BindingResult result) throws UniversityException{
 		ModelAndView mnv=new ModelAndView();
-	
-		if(result.hasErrors()){
+		 Date dateOfBirth = applicant.getDateOfBirth();
+		if(result.hasErrors() || dateOfBirth == null){
+			if(dateOfBirth == null){
+				mnv.addObject("dateOfBirthError", "Date Of Birth is mandatory");
+			}
 			List<ProgramScheduledBean> list;
 			list=applicantService.viewAllScheduledProgram();
 			ArrayList<String> ids=new ArrayList<String>();
@@ -254,7 +257,7 @@ return model;
 		if(result.hasErrors()){
 			
 			modelAndView.addObject("programOfferedBean", programOfferedBean);
-//			System.out.println("xxxxxxxxxxxxxxxxxxxxxxx" + programOfferedBean.getDuration());
+
 			modelAndView.setViewName("addProgramsOffered");
 		}else{
 			ProgramOfferedBean offeredBean = adminService.findoffered(programOfferedBean.getProgramName());
@@ -436,10 +439,10 @@ return model;
 			Date ed = programScheduledBean.getEndDate();
 			if(result.hasErrors() || sd == null || ed == null){
 				if(sd == null){
-					mnv.addObject("dateError", "Start Date is mandatory ");
+					mnv.addObject("startDateError", "Start Date is mandatory ");
 				}
 				if(ed == null){
-					mnv.addObject("dateError", "End Date is mandatory ");
+					mnv.addObject("endDateError", "End Date is mandatory ");
 				}
 				mnv.addObject("programScheduledBean",programScheduledBean );
 				mnv.setViewName("addProgramSchedule");

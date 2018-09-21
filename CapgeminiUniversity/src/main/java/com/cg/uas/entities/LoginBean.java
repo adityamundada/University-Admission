@@ -16,10 +16,10 @@ public class LoginBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 		@Id
 		@Column(name="login_id")
-		@NotEmpty(message = "Please enter user name")
+		@NotEmpty(message = "User name is mandatory")
 		private String userName;
 		@Column(name="password")
-		@NotEmpty(message = "Please enter password")
+		@NotEmpty(message = "Password is mandatory")
 		private String password;
 		@Column(name="role")
 		private String role;

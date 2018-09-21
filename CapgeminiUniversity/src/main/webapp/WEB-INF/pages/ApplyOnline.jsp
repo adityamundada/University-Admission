@@ -41,10 +41,17 @@ body{
   <form:input path="fullName" placeholder = "Enter your Full Name"/>
   <form:errors path="fullName" cssClass="error"></form:errors></td></tr>
 
-  <tr><td> Enter Date Of Birth:</td><td>
-  <form:input    path="dateOfBirth" type = "date"/><br/>
-  <form:errors path="dateOfBirth" cssClass="error"></form:errors>
-</td></tr>
+  <tr><td> Enter Date Of Birth:</td>
+  	<td>
+  		<form:input    path="dateOfBirth" type = "date"/><br/>
+		<c:if test="${dateOfBirthError ne null}">
+	  			 <span style="color:red">  ${dateOfBirthError} </span>  
+	  	</c:if> 
+	  	<c:if test="${dateOfBirthError eq null}">
+	  		<form:errors path="dateOfBirth" style="color:red" ></form:errors>
+	  	</c:if>
+	</td>
+</tr>
 
   <tr><td> Enter your highest qualification:</td><td>
   <form:input path="highestQualification" placeholder = "Enter your Highest Qualifications"/>

@@ -55,22 +55,24 @@ body{
 						<td></td>  --%>
   		<td>Enter Start date </td>
   		<td><form:input path="startDate" type = "date" />
-  		<p style="color:red">
-  		<c:if test="${dateError ne null}"> ${dateError }  </c:if><p> 
-  		<c:if test="${dateError eq null}">
-  			<form:errors path="startDate" style="color:red" ></form:errors>
-  		</c:if>
+	  		<c:if test="${startDateError ne null}">
+	  			 <span style="color:red">  ${startDateError } </span>  
+	  		</c:if> 
+	  		<c:if test="${startDateError eq null}">
+	  			<form:errors path="startDate" style="color:red" ></form:errors>
+	  		</c:if>
   		</td>
   	</tr>
   	<tr>
   		<td> Enter End Date </td>
   		<td><form:input path="endDate" type = "date" />
-  		<p style="color:red">
-  		<c:if test="${dateError ne null}"> ${dateError }  </c:if><p> 
-  		<c:if test="${dateError eq null}">
-  			<form:errors path="endDate" style="color:red" ></form:errors>
-  		</c:if>
-  		</td>
+	  		<c:if test="${endDateError ne null}">
+	  			 <span style="color:red">  ${endDateError } </span>  
+	  		</c:if> 
+	  		<c:if test="${endDateError eq null}">
+	  			<form:errors path="endDate" style="color:red" ></form:errors>
+	  		</c:if>
+	  	</td>
   	</tr>
   	<tr>
   		<td>Enter Sessions Per Week </td>
