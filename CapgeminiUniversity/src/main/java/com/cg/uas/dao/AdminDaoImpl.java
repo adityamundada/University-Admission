@@ -6,12 +6,15 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import com.cg.uas.controller.UniversityController;
 import com.cg.uas.entities.ApplicationBean;
 import com.cg.uas.entities.ProgramOfferedBean;
 import com.cg.uas.entities.ProgramScheduledBean;
@@ -21,6 +24,9 @@ import com.cg.uas.exception.UniversityException;
 @Repository
 public class AdminDaoImpl implements IAdminDao{
 
+	
+	public static final Logger LOGGER = Logger.getLogger(AdminDaoImpl.class);
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	
@@ -40,7 +46,7 @@ public class AdminDaoImpl implements IAdminDao{
 		
 		entityManager.persist(programOfferedBean);
 		entityManager.flush();
-		
+		LOGGER.info("Program offered successfully");
 		return programOfferedBean;
 	}
 
@@ -58,6 +64,7 @@ public class AdminDaoImpl implements IAdminDao{
 	public List<ProgramOfferedBean> viewProgramsOffered() throws UniversityException {
 
 		TypedQuery<ProgramOfferedBean> query=entityManager.createQuery(IQueryMapper.VIEW_PROGRAMS_OFFERED,ProgramOfferedBean.class);
+		LOGGER.info("Fetched programs offered successfully");
 		return query.getResultList();
 	}
 
@@ -74,7 +81,7 @@ public class AdminDaoImpl implements IAdminDao{
 	@Override
 	public boolean updateOffered(ProgramOfferedBean bean)throws UniversityException {
 		entityManager.merge(bean);
-
+		LOGGER.info("Program offered updated successfully");
 		return true;
 	}
 
@@ -90,13 +97,15 @@ public class AdminDaoImpl implements IAdminDao{
 	
 	@Override
 	public ProgramOfferedBean findOffered(String name)throws UniversityException {
-		ProgramOfferedBean bean = entityManager.find(
-				ProgramOfferedBean.class, name);
+		ProgramOfferedBean bean = entityManager.find(ProgramOfferedBean.class, name);
 		if (bean != null) {
-
+			LOGGER.info("Offered program found successfully for given name");
 			return bean;
-		} else
+		} else {
+			LOGGER.error("Could not find offered program");
 			return null;
+		}
+			
 	}
 
 	/************************************   DELETE PROGRAMS OFFERED  *****************************************
@@ -114,6 +123,7 @@ public class AdminDaoImpl implements IAdminDao{
 		// 
 		ProgramOfferedBean bean = entityManager.find(ProgramOfferedBean.class, name);
 		if (bean == null) {
+			LOGGER.error("Could not find given offered program for deletion");
 			return false;
 		}else{
 
@@ -123,7 +133,8 @@ public class AdminDaoImpl implements IAdminDao{
 			if(scheduleBean.size()==0){
 				entityManager.remove(bean);
 				return true;
-			}else{
+			}
+			else{
 				return false;
 			
 			}
@@ -142,11 +153,12 @@ public class AdminDaoImpl implements IAdminDao{
 	 ********************************************************************************************************/ 
 
 	@Override
-	public ProgramScheduledBean deleteSchedule(String scheduledProgramID)
-			throws UniversityException {
+	public ProgramScheduledBean deleteSchedule(String scheduledProgramID) throws UniversityException {
 		ProgramScheduledBean programScheduledBean = entityManager.find(ProgramScheduledBean.class,scheduledProgramID);
-		if(programScheduledBean == null)
+		if(programScheduledBean == null) {
+			LOGGER.error("Could not find given scheduled program for deletion");
 			return null;
+		}
 		else{
 			
 			
@@ -158,6 +170,7 @@ public class AdminDaoImpl implements IAdminDao{
 				 return null;
 			 }else{
 				 entityManager.remove(programScheduledBean);
+				 LOGGER.info("Program scheduled deleted successfully");
 				 return programScheduledBean;
 				 
 			 }
@@ -198,6 +211,7 @@ public class AdminDaoImpl implements IAdminDao{
 	public ProgramScheduledBean addSchedule(ProgramScheduledBean programScheduledBean)throws UniversityException {
 		entityManager.persist(programScheduledBean);
 		entityManager.flush();
+		LOGGER.info("Program schedule added successfully");
 		return programScheduledBean;
 	}
 	
