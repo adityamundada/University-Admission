@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.cg.uas.entities.ApplicationBean;
@@ -19,6 +20,8 @@ import com.cg.uas.exception.UniversityException;
 @Repository
 @Transactional
 public class MACDaoImpl implements IMACDao {
+	
+	public static final Logger LOGGER = Logger.getLogger(MACDaoImpl.class);
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -36,6 +39,7 @@ public class MACDaoImpl implements IMACDao {
 	@Override
 	public List<ProgramScheduledBean> viewAllScheduledPrograms() throws UniversityException {
 		TypedQuery<ProgramScheduledBean> tQuery = entityManager.createQuery(IQueryMapper.RETRIEVE_PROGRAMS_BY_ID, ProgramScheduledBean.class);
+		LOGGER.info("Scheduled programs retrieved successfully");
 		return tQuery.getResultList();
 	}
 	
@@ -53,6 +57,7 @@ public class MACDaoImpl implements IMACDao {
 	public List<ApplicationBean> viewApplicant(String scheduledProgramId) throws UniversityException {
 		TypedQuery<ApplicationBean> tQuery = entityManager.createQuery(IQueryMapper.RETRIEVE_APPLICANTS, ApplicationBean.class);
 		tQuery.setParameter(1, scheduledProgramId);
+		LOGGER.info("Retrieved list of applicants for given program successfully");
 		return tQuery.getResultList();
 	}
 	
@@ -71,6 +76,7 @@ public class MACDaoImpl implements IMACDao {
 		Query query = entityManager.createQuery(IQueryMapper.SET_STATUS_ACCEPT);
 		query.setParameter(1, applicationId);
 		query.executeUpdate();
+		LOGGER.info("Applicant accepted succesfully");
 		return null;
 	}
 
@@ -104,20 +110,11 @@ public class MACDaoImpl implements IMACDao {
 	@Override
 	public ApplicationBean interview(Integer applicationId, Date date) throws UniversityException {
 		
-		/*SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-		Date date = null;
-		try {
-			date = sdf1.parse(dateInString);
-		} 
-		catch (ParseException e) {
-			System.err.println(e.getMessage());
-		}
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime()); */
-		
 		Query query = entityManager.createQuery(IQueryMapper.SET_INTERVIEW_DATE);
 		query.setParameter(1, date);
 		query.setParameter(2, applicationId);
 		query.executeUpdate();
+		LOGGER.info("Interview date for applicant set");
 		return null;
 	}
 
@@ -136,6 +133,7 @@ public class MACDaoImpl implements IMACDao {
 		Query query = entityManager.createQuery(IQueryMapper.SET_STATUS_CONFIRMED);
 		query.setParameter(1, applicationId);
 		query.executeUpdate();
+		LOGGER.info("Applicant confirmed succesfully");
 		return null;
 	}
 	
@@ -154,6 +152,7 @@ public class MACDaoImpl implements IMACDao {
 		Query query = entityManager.createQuery(IQueryMapper.SET_STATUS_REJECT);
 		query.setParameter(1, applicationId);
 		query.executeUpdate();
+		LOGGER.info("Applicant rejected succesfully");
 		return null;
 	}
 
@@ -184,6 +183,7 @@ public class MACDaoImpl implements IMACDao {
 				query.setParameter(2, appBean.getApplicationId());
 				query.setParameter(3, appBean.getScheduledProgramID());
 				query.executeUpdate();
+				LOGGER.info("Inserted confirmed applicant into participant succesfully");
 			}
 		
 			TypedQuery<ParticipantBean> tQuery2 = entityManager.createQuery(IQueryMapper.RETRIEVE_CONFIRMED_PARTICIPANT, ParticipantBean.class);
@@ -203,7 +203,7 @@ public class MACDaoImpl implements IMACDao {
 	- Throws			:  	UniversityException
 	- Author			:	cg 
 	- Creation Date		:	14/09/2018
-	- Description		:	Validates the start date
+	- Description		:	Gets the start date to pass on to interview.jsp as hidden field
 	 ********************************************************************************************************/ 
 
 	

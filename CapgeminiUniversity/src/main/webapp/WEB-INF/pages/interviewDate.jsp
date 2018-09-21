@@ -53,7 +53,7 @@ body{
 		
 				<td>Application ID:</td>
   				<td>
-  					<form:input path="applicationId" value="${applicationBean.applicationId}"/>
+  					<form:input path="applicationId" readonly="true" value="${applicationBean.applicationId}"/>
   					<form:errors path="applicationId" style="color:red"> </form:errors>
   				</td>
   				<td>Interview date:</td>

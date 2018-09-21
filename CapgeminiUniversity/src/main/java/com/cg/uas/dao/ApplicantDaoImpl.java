@@ -1,11 +1,15 @@
 package com.cg.uas.dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
+
 import com.cg.uas.entities.ApplicationBean;
 import com.cg.uas.entities.LoginBean;
 import com.cg.uas.entities.ProgramScheduledBean;
@@ -15,6 +19,9 @@ import com.cg.uas.exception.UniversityException;
 @Transactional
 
 public class ApplicantDaoImpl implements IApplicantDao {
+	
+	public static final Logger LOGGER = Logger.getLogger(ApplicantDaoImpl.class);
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	
@@ -33,6 +40,7 @@ public class ApplicantDaoImpl implements IApplicantDao {
 		applicant.setStatus("APPLIED");
 		entityManager.persist(applicant);
 		entityManager.flush();
+		LOGGER.info("Applicant added successfully with status APPLIED");
 		return applicant;
 	}
 	
@@ -69,6 +77,7 @@ public class ApplicantDaoImpl implements IApplicantDao {
 						
 		
 		if(login==null){
+			LOGGER.error("User login id not found");
 			throw new UniversityException("THIS USER LOGIN ID DOESN'T EXISTS");
 			}
 		
@@ -96,6 +105,7 @@ public class ApplicantDaoImpl implements IApplicantDao {
 	public List<ProgramScheduledBean> viewAllScheduledProgram() throws UniversityException {
 		TypedQuery<ProgramScheduledBean> query = entityManager.createQuery(IQueryMapper.VIEW_SCHEDULED_PROGRAMS, ProgramScheduledBean.class);
 		List<ProgramScheduledBean> list = query.getResultList();
+		LOGGER.info("Scheduled programs retrieved successfully");
 		return list;
 	}
 

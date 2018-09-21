@@ -7,7 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +30,9 @@ import com.cg.uas.service.IMACService;
 
 @Controller
 public class UniversityController {
-	
-	public UniversityController() {
-		//PropertyConfigurator.configure("src//log4j.properties");
-		
-	}
-	//
+
+	public static final Logger logger = Logger.getLogger(UniversityController.class);
+
 	@Autowired
 	private IApplicantService applicantService;
 	
@@ -95,12 +92,12 @@ public class UniversityController {
 		{
 			if("admin".equals(role))
 			{
-
+				logger.info("Admin logged in successfully!");
 				return new ModelAndView("AdminHome","user","admin");
 			}
 				else if("mac".equals(role))
 				{
-
+					logger.info("MAC logged in successfully!");
 					return new ModelAndView("MACHome","user","mac");
 				}
 				else
@@ -667,16 +664,12 @@ return model;
 	public ModelAndView showInterviewForm(@RequestParam("appId") Integer appId) {
 		ModelAndView model = new ModelAndView();
 		ApplicationBean applicationBean = new ApplicationBean();
-		//ProgramScheduledBean programScheduledBean = new ProgramScheduledBean();
 		applicationBean.setApplicationId(appId);
 		java.sql.Date startDate;
 		try {
 			macService.accept(appId);
 			startDate = macService.getStartDateForValidation(appId);
-			System.out.println("vvvvvvvvvv startDate: " + startDate);
-			//programScheduledBean.setStartDate(startDate);
 			model.setViewName("interviewDate");
-			//model.addObject("applicant", appId);
 			model.addObject("applicationBean", applicationBean);
 			model.addObject("startDate", startDate);
 		} 
@@ -691,12 +684,9 @@ return model;
 	// Shows the date of interview for applicant
 	
 	@RequestMapping("/interview.obj")
-	//public ModelAndView interviewDate(@RequestParam("appId") Integer appId, @RequestParam("dateOfInterview") String date) {
 	public ModelAndView interviewDate(@ModelAttribute("applicationBean") ApplicationBean applicationBean, BindingResult result ) {
 		ModelAndView model = new ModelAndView();
 		try {
-			System.out.println("xxxxxxxxx in /interview.obj ---->" + applicationBean.getDateOfInterview());
-			System.out.println("yyyyyyyyyy in /interview.obj --->" + applicationBean.getApplicationId());
 			macService.interview(applicationBean.getApplicationId(), applicationBean.getDateOfInterview());
 			model.setViewName("MACHome");
 		} 
@@ -733,16 +723,16 @@ return model;
 	public ModelAndView applicantStatus() {
 		ModelAndView model = new ModelAndView();
 		List<ProgramScheduledBean> programScheduledList;
-		System.out.println("xxxxxxxx");
+		
 		try {
 			programScheduledList = macService.viewAllScheduledPrograms();
 			if(programScheduledList.size() < 1) {
-				System.out.println("yyyyyyy");
+				
 				model.setViewName("error");
 				model.addObject("message", "NO RECORD FOUND");
 			}
 			else {
-				System.out.println("zzzzzzz");
+				
 				model.setViewName("ScheduledProgramsAfterInterview");
 				model.addObject("programScheduledList", programScheduledList );
 			}
@@ -761,7 +751,6 @@ return model;
 	public ModelAndView afterInterviewStatus(@RequestParam("programId") String programId) {
 		ModelAndView model = new ModelAndView();
 		List<ApplicationBean> list;
-		//System.out.println("aaaaaaaaaa");
 		try {
 			list = macService.confirmedApplicants(programId);
 			if(list.size() < 1) {
